@@ -1,14 +1,211 @@
+/* global styles */
+@font-face {
+	font-family: 'Equinor-Main';
+	src: url(./_assets/fonts/Equinor-Regular.woff2) format('woff2'); /* Modern Browsers */
+}
+
+@font-face {
+	font-family: 'Equinor-Main-Italic';
+	font-style: italic;
+	src: url(./_assets/fonts/Equinor-Italic.woff2) format('woff2'); /* Modern Browsers */
+}
+
+@font-face {
+	font-family: 'Equinor-Heading-Alternate';
+
+	src: url(./_assets/fonts/Equinor-Medium.woff2) format('woff2'); /* Modern Browsers */
+}
+
+@font-face {
+	font-family: 'Equinor-Heading-Alternate-Italic';
+
+	font-style: italic;
+	src: url(./_assets/fonts/Equinor-MediumItalic.woff2) format('woff2'); /* Modern Browsers */
+}
+
+/* Add the following to get alternate character styles */
+/* -webkit-font-feature-settings: 'ss01';
+font-feature-settings: 'ss01'; */
+
+:root {
+	--font-main: 'Equinor-Main', sans-serif;
+	--font-main-italic: 'Equinor-Main-Italic', sans-serif;
+	--font-heading: 'Equinor-Heading-Alternate', sans-serif;
+	--font-heading-italic: 'Equinor-Heading-Alternate-Italic', sans-serif;
+	--font-weight: 400;
+	--font-weight-heading: 500;
+	--font-weight-bold: 700;
+	--font-min: 16px;
+	--font-reg: 18px;
+	--font-subtitle: 30px;
+	--font-title: 50px;
+	--letter-spacing: -0.25px;
+	--line-height: 1.3;
+	--energy-red: rgba(255, 18, 67);
+	--slate-blue: rgba(36, 55, 70);
+	--heritage-red: rgba(125, 0, 35);
+	--moss-green: rgba(0, 112, 121);
+	--mist-blue: rgba(213, 234, 244);
+	--spruce-wood: rgba(255, 231, 214);
+	--lichen-green: rgba(230, 250, 236);
+	--white: rgba(255, 255, 255);
+	--black: rgba(51, 51, 51);
+	--equinor-main: var(--energy-red);
+	--equinor-supporting-blue: var(--slate-blue);
+	--equinor-supporting-blue-light: var(--mist-blue);
+	--equinor-supporting-green: var(--moss-green);
+	--equinor-supporting-green-light: var(--lichen-green);
+	--equinor-supporting-highlight: var(--spruce-wood);
+	--grey: rgba(242, 242, 242);
+	--grey-dark: rgba(102, 102, 102);
+	--error: var(--heritage-red);
+	--unit: 5;
+	--single: calc(var(--unit) * 1px);
+	--double: calc(var(--unit) * 2px);
+	--triple: calc(var(--unit) * 3px);
+	--quad: calc(var(--unit) * 4px);
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+p,
+pre,
+blockquote,
+figure,
+hr,
+canvas {
+	margin: 0;
+	padding: 0;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: var(--black);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-heading);
+	font-weight: var(--font-weight-heading);
+	font-size: var(--font-title);
+	letter-spacing: var(--letter-spacing);
+	line-height: var(--line-height);
+	margin-bottom: var(--quad);
+}
+
+h1.italic,
+h2.italic,
+h3.italic,
+h4.italic,
+h5.italic,
+h6.italic {
+	font-family: var(--font-heading-italic);
+}
+
+p {
+	font-family: var(--font-main);
+	font-weight: var(--font-weight);
+	font-size: var(--font-reg);
+	line-height: var(--line-height);
+	letter-spacing: 0;
+}
+
+p.italic {
+	font-family: var(--font-main-italic);
+}
+
+.bold {
+	font-weight: var(--font-weight-bold);
+}
+
+ul {
+	list-style: none;
+}
+
+a,
+a:visited {
+	font-family: var(--font-heading);
+	font-weight: var(--font-weight);
+	font-size: var(--font-min);
+	text-transform: capitalize;
+	text-decoration: none;
+	color: var(--black);
+	padding: var(--double) 0px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+a:hover {
+	color: var(--grey-dark);
+}
+
+input,
+textarea,
+select,
+button {
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	border: 1px solid var(--grey);
+}
+
+button {
+	border-radius: 0;
+	padding: 0.75em 1em;
+	background-color: transparent;
+	font-family: var(--font-main);
+	letter-spacing: 0.1em;
+}
+
+embed,
+iframe,
+img,
+object,
+video,
+canvas {
+	display: block;
+	max-width: 100%;
+}
+
+table {
+	table-layout: fixed;
+	width: 100%;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+noscript {
+	display: block;
+	margin-bottom: 1em;
+	margin-top: 1em;
 }
