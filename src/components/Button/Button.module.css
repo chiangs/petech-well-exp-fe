@@ -1,0 +1,44 @@
+/* *Modify default global button styles */
+.Button {
+	transition: background-color 0.2s ease-in;
+	letter-spacing: 0.03em;
+}
+
+.Default {
+	border: 1px solid var(--equinor-main);
+	color: var(--equinor-supporting-blue);
+}
+
+.Default:hover {
+	background-color: var(--equinor-main-hover);
+}
+
+.Submit {
+	border: 1px solid var(--equinor-supporting-green);
+	background-color: var(--equinor-supporting-green);
+	color: var(--equinor-supporting-blue-light);
+}
+
+.Submit:hover {
+	background-color: var(--equinor-supporting-green-hover);
+}
+
+.Cancel {
+	border: 1px solid var(--equinor-supporting-blue);
+	background-color: var(--equinor-supporting-blue);
+	color: var(--equinor-supporting-blue-light);
+}
+
+.Cancel:hover {
+	background-color: var(--equinor-supporting-blue-hover);
+}
+
+.Warning {
+	border: 1px solid var(--error);
+	background-color: var(--error);
+	color: var(--equinor-supporting-highlight);
+}
+
+.Warning:hover {
+	background-color: var(--error-hover);
+}

@@ -6,23 +6,28 @@
 
 @font-face {
 	font-family: 'Equinor-Main-Italic';
-	font-style: italic;
 	src: url(./_assets/fonts/Equinor-Italic.woff2) format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
-	font-family: 'Equinor-Heading-Alternate';
-
+	font-family: 'Equinor-Heading';
 	src: url(./_assets/fonts/Equinor-Medium.woff2) format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
-	font-family: 'Equinor-Heading-Alternate-Italic';
-
-	font-style: italic;
+	font-family: 'Equinor-Heading-Italic';
 	src: url(./_assets/fonts/Equinor-MediumItalic.woff2) format('woff2'); /* Modern Browsers */
 }
 
+@font-face {
+	font-family: 'Equinor-Bold';
+	src: url(./_assets/fonts/Equinor-Bold.woff2) format('woff2'); /* Modern Browsers */
+}
+
+@font-face {
+	font-family: 'Equinor-Bold-Italic';
+	src: url(./_assets/fonts/Equinor-BoldItalic.woff2) format('woff2'); /* Modern Browsers */
+}
 /* Add the following to get alternate character styles */
 /* -webkit-font-feature-settings: 'ss01';
 font-feature-settings: 'ss01'; */
@@ -30,8 +35,10 @@ font-feature-settings: 'ss01'; */
 :root {
 	--font-main: 'Equinor-Main', sans-serif;
 	--font-main-italic: 'Equinor-Main-Italic', sans-serif;
-	--font-heading: 'Equinor-Heading-Alternate', sans-serif;
-	--font-heading-italic: 'Equinor-Heading-Alternate-Italic', sans-serif;
+	--font-heading: 'Equinor-Heading', sans-serif;
+	--font-heading-italic: 'Equinor-Heading-Italic', sans-serif;
+	--font-bold: 'Equinor-Bold', sans-serif;
+	--font-bold-italic: 'Equinor-Bold-Italic', sans-serif;
 	--font-weight: 400;
 	--font-weight-heading: 500;
 	--font-weight-bold: 700;
@@ -41,29 +48,40 @@ font-feature-settings: 'ss01'; */
 	--font-title: 50px;
 	--letter-spacing: -0.25px;
 	--line-height: 1.3;
-	--energy-red: rgba(255, 18, 67);
-	--slate-blue: rgba(36, 55, 70);
-	--heritage-red: rgba(125, 0, 35);
-	--moss-green: rgba(0, 112, 121);
-	--mist-blue: rgba(213, 234, 244);
-	--spruce-wood: rgba(255, 231, 214);
-	--lichen-green: rgba(230, 250, 236);
-	--white: rgba(255, 255, 255);
-	--black: rgba(51, 51, 51);
-	--equinor-main: var(--energy-red);
-	--equinor-supporting-blue: var(--slate-blue);
-	--equinor-supporting-blue-light: var(--mist-blue);
-	--equinor-supporting-green: var(--moss-green);
-	--equinor-supporting-green-light: var(--lichen-green);
-	--equinor-supporting-highlight: var(--spruce-wood);
-	--grey: rgba(242, 242, 242);
-	--grey-dark: rgba(102, 102, 102);
-	--error: var(--heritage-red);
+	--border-radius: 3px;
+	--hover-lighten: 0.1;
+	/* *Spacing for lines, padding, margins */
 	--unit: 5;
 	--single: calc(var(--unit) * 1px);
 	--double: calc(var(--unit) * 2px);
 	--triple: calc(var(--unit) * 3px);
 	--quad: calc(var(--unit) * 4px);
+	/* *Color values are numbers only, this provides flexibility for opacity
+	* Fx: --equinor-main-faded: rgba(var(--equinor-main), .5)); */
+	--energy-red: 255, 18, 67;
+	--slate-blue: 36, 55, 70;
+	--slate-blue-darken: 26, 40, 51;
+	--heritage-red: 125, 0, 35;
+	--moss-green: 0, 112, 121;
+	--moss-green-darken: 0, 84, 91;
+	--mist-blue: 213, 234, 244;
+	--spruce-wood: 255, 231, 214;
+	--lichen-green: 230, 250, 236;
+	--white: rgba(255, 255, 255);
+	--black: rgba(51, 51, 51);
+	--grey: rgba(242, 242, 242);
+	--grey-dark: rgba(102, 102, 102);
+	--error: rgba(var(--heritage-red));
+	--error-hover: rgba(89, 0, 25);
+	--equinor-main: rgba(var(--energy-red));
+	--equinor-main-hover: rgba(var(--energy-red), var(--hover-lighten));
+	--equinor-supporting-blue: rgba(var(--slate-blue));
+	--equinor-supporting-blue-hover: rgba(var(--slate-blue-darken));
+	--equinor-supporting-blue-light: rgba(var(--mist-blue));
+	--equinor-supporting-green: rgba(var(--moss-green));
+	--equinor-supporting-green-hover: rgba(var(--moss-green-darken));
+	--equinor-supporting-green-light: rgba(var(--lichen-green));
+	--equinor-supporting-highlight: rgba(var(--spruce-wood));
 }
 
 html {
@@ -138,12 +156,16 @@ p {
 	letter-spacing: 0;
 }
 
-p.italic {
+.italic {
 	font-family: var(--font-main-italic);
 }
 
 .bold {
-	font-weight: var(--font-weight-bold);
+	font-family: var(--font-bold);
+}
+
+.bold.italic {
+	font-family: var(--font-bold-italic);
 }
 
 ul {
@@ -172,17 +194,17 @@ textarea,
 select,
 button {
 	color: inherit;
-	font: inherit;
-	letter-spacing: inherit;
+	font: var(--font-heading);
 	border: 1px solid var(--grey);
 }
 
 button {
-	border-radius: 0;
-	padding: 0.75em 1em;
+	cursor: pointer;
+	padding: 0.5em 2em;
 	background-color: transparent;
-	font-family: var(--font-main);
+	font-family: var(--font-bold);
 	letter-spacing: 0.1em;
+	border-radius: var(--border-radius);
 }
 
 embed,
