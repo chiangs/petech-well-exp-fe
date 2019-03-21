@@ -1,8 +1,11 @@
 import React from 'react';
-import css from './navigation.module.css';
+import css from './Navigation.module.css';
+import NavigationItems from './NavigationItems/NavigationItems';
 
-const navigation = () => {
-	return <nav className={css.navigation}>Navigation</nav>;
-};
+const navigation = () => (
+	<nav className={css.Navigation}>
+		<NavigationItems />
+	</nav>
+);
 
 export default navigation;

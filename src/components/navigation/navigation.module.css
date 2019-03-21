@@ -1,2 +1,6 @@
-.navigation {
+.Navigation {
+	height: calc(var(--quad) * 4);
+	width: 100%;
+	display: flex;
+	border: 1px solid var(--black);
 }
