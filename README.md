@@ -1,10 +1,22 @@
-# Equinor, Johan Sverdrup - React Template
+# Equinor, Johan Sverdrup - Petech Well Experience v0.1.0
+
+## State Management
+
+Uses Redux pattern, possibly replace with `React hooks` and `Context` API over time.
 
 ## Styles
 
 Uses CSS modules to encapsulate component styles. BEM framework also implemented. Refer to index.css for global CSS variables as well as app global defaults which can be used or modified or overridden in the components.
 
 Refer to Equinor style guide for further reference on colors, typography and pairings.
+
+## Date manipulation
+
+Use `moment.js` to do all manipulations with dates.
+
+## Data objects
+<!-- ? Tentative -->
+<!-- Uses `normalizr` to flatten data objects from back-end to streamline data traversal and iteration. -->
 
 ## Form Configuration
 
