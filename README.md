@@ -1,6 +1,44 @@
 # Equinor, Johan Sverdrup - React Template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Styles
+
+Uses CSS modules to encapsulate component styles. BEM framework also implemented. Refer to index.css for global CSS variables as well as app global defaults which can be used or modified or overridden in the components.
+
+Refer to Equinor style guide for further reference on colors, typography and pairings.
+
+## Form Configuration
+
+The generic form component takes in a JS configuration and utilizes custom hooks to handle changes and validation before submitting. Once valid, submit sends the form's data to the container to be handled.
+
+The form follows best practices of form design patterns by signaling what is required or optional and providing validation error in one place as well as waiting for the user to hit submit instead of disabling the submit button.
+
+The form configuration file should be in it's on file alongside the container file.
+Here is what the form cofiguration object should look like to create a form with 2 input fields.
+```js
+// formNameConfig.js
+export const formName = {
+    inputName: {
+        label: string, required,
+        hint: string, optional,
+        elementType: string constant from constants file, required,
+        elementConfig: (required) {
+            type: string constant from constants file
+            hidden: boolean for password input fields, default should be true
+            value: initialValue or empty string as default
+        },
+        validation: (optional) {
+            valid: boolean, required, default should be false,
+            email: boolean, optional, tied to email regex validator
+            required: boolean, optional
+            minLength: number, optional
+            maxLength: number, optional
+        }
+    },
+    inputName2: {
+        ...same as above
+    }
+}
+```
 
 ## Available Scripts
 
