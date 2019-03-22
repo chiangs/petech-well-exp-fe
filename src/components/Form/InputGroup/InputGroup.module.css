@@ -1,0 +1,37 @@
+.InputGroup {
+	width: 100%;
+	min-height: var(--quad);
+}
+
+.InputGroup__LabelGroup {
+	width: 100%;
+}
+
+.InputGroup__Label {
+	display: block;
+	font-family: var(--font-bold);
+}
+
+.InputGroup__Hint {
+	display: block;
+	font-family: var(-font-main-italic);
+}
+
+/* TODO: Maybe colorize the border? */
+.InputElement {
+	width: 100%;
+	border: 1px solid var(--black);
+	background-color: var(--white);
+	font: var(--font-main);
+	padding: var(--single) var(--double);
+}
+
+.InputElement:focus {
+	outline: var(--equinor-main);
+}
+
+/* TODO: Add in validation styling */
+
+.InputGroup__Optional {
+	font-family: var(--font-main);
+}
