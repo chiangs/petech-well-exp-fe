@@ -4,9 +4,22 @@
 	display: flex;
 	justify-content: space-between;
 	border: 1px solid var(--grey);
+	padding: 0 var(--triple);
 }
 
+.Navigation__LogoSection {
+	flex: 1;
+	max-width: 150px;
+}
+
+.Navigation__LogoSection a,
 .Navigation__LogoSection img {
 	height: 100%;
-	width: auto;
+	max-width: auto;
+}
+
+.Navigation__NavigationItems {
+	flex: 3;
+	display: flex;
+	justify-content: flex-end;
 }

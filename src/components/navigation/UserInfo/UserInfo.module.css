@@ -1,0 +1,10 @@
+.UserInfo {
+	display: flex;
+	align-items: center;
+}
+
+.UserInfo__Icon {
+}
+
+.UserInfo__NameDisplay {
+}
