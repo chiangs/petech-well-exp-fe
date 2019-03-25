@@ -4,6 +4,8 @@ import css from './Button.module.css';
 
 const Button = props => {
 	const defaultBtn = [buttonTypes.button, buttonTypes.default];
+	const btnType =
+		props.button.type === 'submit' ? props.button.type : 'button';
 	const styledBtn = buttonTypes[props.button.type]
 		? [buttonTypes.button, buttonTypes[props.button.type]]
 		: null;
@@ -17,13 +19,14 @@ const Button = props => {
 	) : null;
 
 	return (
-		<React.Fragment>
-			<button className={classes.join(' ')} onClick={props.btnClick}>
-				<span className={css.Button__ButtonLabel}>
-					{buttonIcon}&nbsp;&nbsp;{props.button.label}
-				</span>
-			</button>
-		</React.Fragment>
+		<button
+			className={classes.join(' ')}
+			onClick={props.btnClick}
+			type={btnType}>
+			<span className={css.Button__ButtonLabel}>
+				{buttonIcon}&nbsp;&nbsp;{props.button.label}
+			</span>
+		</button>
 	);
 };
 
