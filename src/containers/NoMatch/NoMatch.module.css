@@ -1,0 +1,44 @@
+.NoMatch {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: var(--default-page-padding);
+}
+
+.NoMatch__TitleSection {
+	flex: 1;
+	padding: var(--base);
+}
+
+.NoMatch__Title {
+	font-family: var(--font-bold);
+	font-size: var(--font-title);
+	margin: var(--title-space) var(--base);
+}
+
+.NoMatch__Subtitle {
+	font-size: var(--font-subtitle);
+	margin: var(--title-space) var(--base);
+}
+
+.NoMatch__Instructions {
+	flex: 2;
+	background-color: var(--equinor-supporting-blue-light);
+	text-align: center;
+	padding: var(--base) 0;
+}
+
+.NoMatch__Instructions p {
+	font-size: var(--font-reg);
+	margin: var(--base);
+}
+
+.NoMatch__Instructions a {
+	color: var(--equinor-supporting-blue);
+	font-family: var(--font-bold);
+}
+
+.NoMatch__Instructions a:hover {
+	color: var(--equinor-main);
+}

@@ -56,6 +56,9 @@ font-feature-settings: 'ss01'; */
 	--double: calc(var(--unit) * 2px);
 	--triple: calc(var(--unit) * 3px);
 	--quad: calc(var(--unit) * 4px);
+	--base: calc(var(--unit) * 5px);
+	--title-space: calc(var(--unit) * 10px);
+	--default-page-padding: var(--double) var(--quad);
 	/* *Color values are numbers only, this provides flexibility for opacity
 	* Fx: --equinor-main-faded: rgba(var(--equinor-main), .5)); */
 	--energy-red: 255, 18, 67;
@@ -177,7 +180,6 @@ a:visited {
 	font-family: var(--font-heading);
 	font-weight: var(--font-weight);
 	font-size: var(--font-min);
-	text-transform: capitalize;
 	text-decoration: none;
 	color: var(--black);
 	padding: var(--double) 0px;
