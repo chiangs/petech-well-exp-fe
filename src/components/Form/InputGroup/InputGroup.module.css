@@ -1,6 +1,8 @@
 .InputGroup {
-	width: 100%;
+	flex: 1 0 45%;
 	min-height: var(--quad);
+	margin: var(--double);
+	max-width: 48%;
 }
 
 .InputGroup__LabelGroup {
@@ -14,20 +16,26 @@
 
 .InputGroup__Hint {
 	display: block;
-	font-family: var(-font-main-italic);
+	font-family: var(--font-main-italic);
 }
 
 /* TODO: Maybe colorize the border? */
-.InputElement {
+.InputGroup__InputElement {
 	width: 100%;
+	min-height: var(--title-space);
 	border: 1px solid var(--black);
+	border-radius: var(--border-radius);
 	background-color: var(--white);
 	font: var(--font-main);
 	padding: var(--single) var(--double);
+	margin-top: var(--double);
 }
 
-.InputElement:focus {
-	outline: var(--equinor-main);
+.InputGroup__InputElement:focus {
+	outline: 1px solid var(--equinor-main);
+	border: 1px solid var(--equinor-main);
+	border-radius: var(--border-radius);
+	box-shadow: 0 0 1pt 2pt var(--equinor-main);
 }
 
 /* TODO: Add in validation styling */

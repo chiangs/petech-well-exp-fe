@@ -3,7 +3,9 @@ export const INPUT_TYPES = {
 	password: 'password',
 	textarea: 'textarea',
 	select: 'select',
-	text: 'text'
+	text: 'text',
+	url: 'url',
+	file: 'file'
 };
 
 export const PASSWORD_SHOW = 'Show';

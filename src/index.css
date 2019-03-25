@@ -85,6 +85,8 @@ font-feature-settings: 'ss01'; */
 	--equinor-supporting-green-hover: rgba(var(--moss-green-darken));
 	--equinor-supporting-green-light: rgba(var(--lichen-green));
 	--equinor-supporting-highlight: rgba(var(--spruce-wood));
+	/* *Default heights */
+	--navigation-height-desktop: calc(var(--quad) * 4);
 }
 
 html {
@@ -123,6 +125,12 @@ body {
 	color: var(--black);
 }
 
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
@@ -157,6 +165,11 @@ p {
 	font-size: var(--font-reg);
 	line-height: var(--line-height);
 	letter-spacing: 0;
+}
+
+#root {
+	height: 100%;
+	width: 100%;
 }
 
 .italic {
@@ -198,6 +211,11 @@ button {
 	color: inherit;
 	font: var(--font-heading);
 	border: 1px solid var(--grey);
+}
+
+textarea {
+	height: auto;
+	resize: none;
 }
 
 button {

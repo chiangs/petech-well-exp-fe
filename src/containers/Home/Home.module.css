@@ -1,0 +1,41 @@
+.Home {
+	height: inherit;
+	width: inherit;
+	display: flex;
+	flex-direction: column;
+}
+
+.Home__Title {
+}
+
+.Home__Subtitle {
+}
+
+.Home__Subtitle h2 {
+	font-size: var(--font-reg);
+}
+
+.Home__Buttons {
+	padding: var(--title-space);
+	text-align: center;
+}
+
+.Home__Buttons ul {
+	display: flex;
+	justify-content: center;
+}
+
+.Home__Button {
+	margin: var(--base);
+}
+
+.Home__InfoSection {
+	margin: 0 25%;
+	padding: var(--title-space);
+	border: 1px solid var(--equinor-supporting-blue);
+	border-radius: var(--border-radius);
+}
+
+.Home__InfoSection p {
+	margin: var(--double) 0;
+}

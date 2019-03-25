@@ -1,0 +1,20 @@
+.NewExperience {
+	height: inherit;
+	width: inherit;
+	display: flex;
+	flex-direction: column;
+}
+
+.NewExperience__Title {
+}
+
+.NewExperience__Subtitle * {
+	font-size: var(--font-reg);
+}
+
+.NewExperience__Form {
+	width: 100%;
+	flex: 1;
+	border: 1px solid var(--grey);
+	border-radius: var(--border-radius);
+}

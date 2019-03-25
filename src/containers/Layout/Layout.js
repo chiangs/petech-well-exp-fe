@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import css from './Layout.module.css';
 import Navigation from '../../components/Navigation/Navigation';
+import css from './Layout.module.css';
 
 export default class Layout extends Component {
 	render() {

@@ -11,9 +11,9 @@ import css from './InputGroup.module.css';
 // * this ensures that an input group is properly labeled and structured, otherwise not rendered to DOM
 
 const InputGroup = props => {
-	const labelClasses = [css.InputGroup__LabelGroup];
-	const inputElementClasses = [css.inputElement];
-	const passwordToggleText = props.elementConfig.hidden
+	const labelClasses = [css.InputGroup__Label];
+	const inputElementClasses = [css.InputGroup__InputElement];
+	const passwordToggleText = props.configuration.hidden
 		? PASSWORD_SHOW
 		: PASSWORD_HIDE;
 	// TODO: Add in optional other potential visual signals and styling
@@ -28,14 +28,18 @@ const InputGroup = props => {
 
 	// * Define the label
 	const label =
-		props.label > 0 ? (
-			<span className={labelClasses.join(' ')}>{props.label}</span>
+		props.configuration.label.length > 0 ? (
+			<span className={labelClasses.join(' ')}>
+				{props.configuration.label}
+			</span>
 		) : null;
 
 	//* Define the hint
 	const hint =
-		label && props.hint.length > 0 ? (
-			<span className={css.InputGroup__Hint}>{props.hint}</span>
+		label && props.configuration.hint.length > 0 ? (
+			<span className={css.InputGroup__Hint}>
+				{props.configuration.hint}
+			</span>
 		) : null;
 
 	// * Create the label group if props available
@@ -44,8 +48,7 @@ const InputGroup = props => {
 			className={css.InputGroup__LabelGroup}
 			htmlFor={props.id}
 			id={props.id}
-			name={props.name}>
-			props.label
+			name={props.id}>
 			{label}
 			{hint}
 		</label>
@@ -55,21 +58,51 @@ const InputGroup = props => {
 	const inputElementDefault = label ? (
 		<input
 			className={inputElementClasses.join(' ')}
-			{...props.elementConfig}
-			value={props.value}
-			onChange={props.changed}
+			{...props.configuration}
+			value={props.configuration.value}
+			onChange={props.configuration.changed}
 			id={props.id}
-			name={props.name}
+			name={props.id}
 		/>
 	) : null;
 
-	let inputElement;
+	console.log(props.configuration);
 
+	let inputElement;
 	if (label) {
 		// * Create the input element type based on props
-		switch (props.elementType) {
+		switch (props.configuration.type) {
 			case INPUT_TYPES.default:
 				inputElement = inputElementDefault;
+				break;
+			case INPUT_TYPES.textarea:
+				inputElement = (
+					<textarea
+						className={inputElementClasses.join(' ')}
+						{...props.elementConfig}
+						value={props.value}
+						onChange={props.changed}
+						id={props.id}
+						name={props.name}
+						rows="10"
+					/>
+				);
+				break;
+			case INPUT_TYPES.select:
+				inputElement = (
+					<select
+						className={inputElementClasses.join(' ')}
+						value={props.value}
+						onChange={props.changed}
+						id={props.id}
+						name={props.name}>
+						{props.elementConfig.options.map(option => (
+							<option key={option.value} value={option.value}>
+								{option.displayValue}
+							</option>
+						))}
+					</select>
+				);
 				break;
 			case INPUT_TYPES.password:
 				inputElement = (
@@ -95,34 +128,6 @@ const InputGroup = props => {
 					</span>
 				);
 				break;
-			case INPUT_TYPES.textarea:
-				inputElement = (
-					<textarea
-						className={inputElementClasses.join(' ')}
-						{...props.elementConfig}
-						value={props.value}
-						onChange={props.changed}
-						id={props.id}
-						name={props.name}
-					/>
-				);
-				break;
-			case INPUT_TYPES.select:
-				inputElement = (
-					<select
-						className={inputElementClasses.join(' ')}
-						value={props.value}
-						onChange={props.changed}
-						id={props.id}
-						name={props.name}>
-						{props.elementConfig.options.map(option => (
-							<option key={option.value} value={option.value}>
-								{option.displayValue}
-							</option>
-						))}
-					</select>
-				);
-				break;
 			default:
 				inputElement = inputElementDefault;
 				break;
@@ -138,7 +143,7 @@ const InputGroup = props => {
 			</div>
 		) : null;
 
-	return { inputGroup };
+	return inputGroup;
 };
 
 export default InputGroup;

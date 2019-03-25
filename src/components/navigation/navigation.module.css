@@ -1,5 +1,5 @@
 .Navigation {
-	height: calc(var(--quad) * 4);
+	height: var(--navigation-height-desktop);
 	width: 100%;
 	display: flex;
 	justify-content: space-between;

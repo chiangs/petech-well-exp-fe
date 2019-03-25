@@ -26,6 +26,8 @@ The form follows best practices of form design patterns by signaling what is req
 
 The form configuration file should be in it's on file alongside the container file.
 Here is what the form cofiguration object should look like to create a form with 2 input fields.
+
+// ! update this
 ```js
 // formNameConfig.js
 export const formName = {

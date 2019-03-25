@@ -1,0 +1,17 @@
+.Form {
+	height: inherit;
+	width: inherit;
+	padding: var(--base) var(--triple);
+	display: flex;
+	flex-direction: column;
+}
+
+.Form__FormControls {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.Form__ActionButtons {
+}
