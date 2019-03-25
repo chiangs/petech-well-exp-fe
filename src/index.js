@@ -6,6 +6,7 @@ import 'normalize.css';
 import './index.css';
 import App from './containers/App/App';
 import * as serviceWorker from './serviceWorker';
+import 'boxicons';
 
 const app = (
 	<BrowserRouter>
