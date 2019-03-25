@@ -8,8 +8,8 @@ const navigationItems = () => {
 	const navLinks = routesArray.map((routeObj, index) => (
 		<li className={css.NavigationItems__NavItem} key={index}>
 			<NavLink
-				className={css.navigationItems__navItem}
-				activeClassName={css.active}
+				className={css.NavigationItems__NavItem}
+				activeClassName={css.Active}
 				to={routeObj.route}
 				exact>
 				{routeObj.label}

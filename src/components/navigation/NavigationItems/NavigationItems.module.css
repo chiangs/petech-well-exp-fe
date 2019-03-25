@@ -1,8 +1,20 @@
 .NavigationItems {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: nowrap;
 }
 
 .NavigationItems__NavItem {
+	white-space: nowrap;
+	padding: 0 var(--triple);
+}
+
+.NavigationItems__NavItem:hover {
+	color: var(--equinor-main);
 }
 
 .Active {
+	color: var(--equinor-main) !important;
 }

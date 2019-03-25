@@ -2,5 +2,11 @@
 	height: calc(var(--quad) * 4);
 	width: 100%;
 	display: flex;
-	border: 1px solid var(--black);
+	justify-content: space-between;
+	border: 1px solid var(--grey);
+}
+
+.Navigation__LogoSection img {
+	height: 100%;
+	width: auto;
 }
