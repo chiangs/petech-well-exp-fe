@@ -29,6 +29,7 @@
 	font: var(--font-main);
 	padding: var(--single) var(--double);
 	margin-top: var(--double);
+	transition: box-shadow 0.1s ease-in;
 }
 
 .InputGroup__InputElement:focus {

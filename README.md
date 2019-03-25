@@ -32,10 +32,9 @@ Here is what the form cofiguration object should look like to create a form with
 // formNameConfig.js
 export const formName = {
     inputName: {
-        label: string, required,
-        hint: string, optional,
-        elementType: string constant from constants file, required,
         elementConfig: (required) {
+            label: string, required,
+            hint: string, optional,
             type: string constant from constants file
             hidden: boolean for password input fields, default should be true
             value: initialValue or empty string as default

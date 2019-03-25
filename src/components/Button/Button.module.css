@@ -4,6 +4,12 @@
 	letter-spacing: 0.03em;
 }
 
+.Button__ButtonLabel {
+	display: flex;
+	align-items: center;
+	color: inherit;
+}
+
 .Default {
 	border: 1px solid var(--equinor-main);
 	color: var(--equinor-supporting-blue);

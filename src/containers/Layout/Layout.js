@@ -12,6 +12,7 @@ export default class Layout extends Component {
 				<main id="main" className={css.Content}>
 					{this.props.children}
 				</main>
+				<footer />
 			</React.Fragment>
 		);
 	}

@@ -12,15 +12,26 @@ export default class Home extends Component {
 		const subtitle = 'Subtitle placeholder text.';
 		const buttonsPrompt = 'Where do you want to begin?';
 		const buttons = [
-			{ label: 'Create new experience', type: 'submit', route: '/new' },
-			{ label: 'Search experiences', type: '', route: '/search' }
+			{
+				label: 'Create new experience',
+				type: 'submit',
+				icon: 'edit',
+				iconType: 'solid',
+				iconColor: 'var(--equinor-supporting-blue-light)',
+				route: '/new'
+			},
+			{
+				label: 'Search experiences',
+				type: 'default',
+				icon: 'search-alt',
+				route: '/search'
+			}
 		];
-		const buttonsList = buttons.map(button => (
+		const buttonsList = buttons.map(buttonConfig => (
 			<li className={css.Home__Button}>
 				<Button
-					label={button.label}
-					btnType={button.type}
-					btnClick={() => this.navTo(button.route)}
+					button={buttonConfig}
+					btnClick={() => this.navTo(buttonConfig.route)}
 				/>
 			</li>
 		));
