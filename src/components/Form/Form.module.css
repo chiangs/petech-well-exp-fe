@@ -6,11 +6,22 @@
 	flex-direction: column;
 }
 
-.Form__FormControls {
+.Form__FormControls__Observations {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
+}
+
+.Form__FormControls__SupportingDocs {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+}
+
+.Form__FormControls__SupportingDocs > * {
+	max-width: 30%;
 }
 
 .Form__ActionButtons {

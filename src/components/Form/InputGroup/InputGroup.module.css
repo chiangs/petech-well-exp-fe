@@ -1,5 +1,5 @@
 .InputGroup {
-	flex: 1 0 45%;
+	flex: 1 33% 45%;
 	min-height: var(--quad);
 	margin: var(--double);
 	max-width: 48%;

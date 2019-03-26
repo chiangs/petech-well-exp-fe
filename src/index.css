@@ -147,7 +147,6 @@ h6 {
 	font-size: var(--font-title);
 	letter-spacing: var(--letter-spacing);
 	line-height: var(--line-height);
-	margin-bottom: var(--quad);
 }
 
 h1.italic,
@@ -159,12 +158,28 @@ h6.italic {
 	font-family: var(--font-heading-italic);
 }
 
+h1 {
+	margin-bottom: var(--title-space);
+}
+
+h2,
+h3 {
+	margin-bottom: var(--triple);
+}
+
+h4,
+h5,
+h6 {
+	margin-bottom: var(--double);
+}
+
 p {
 	font-family: var(--font-main);
 	font-weight: var(--font-weight);
 	font-size: var(--font-reg);
 	line-height: var(--line-height);
 	letter-spacing: 0;
+	margin-bottom: var(--single);
 }
 
 #root {

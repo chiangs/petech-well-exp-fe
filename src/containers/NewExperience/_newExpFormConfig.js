@@ -31,27 +31,27 @@ export const newExpForm = {
 			value: ''
 		},
 		validation: {}
+	},
+	figure: {
+		elementConfig: {
+			label: 'Figure',
+			hint: 'Upload a figure from your computer',
+			type: INPUT_TYPES.file,
+			value: ''
+		},
+		validation: {}
+	},
+	experienceRating: {
+		elementConfig: {
+			label: 'Overall experience',
+			hint: 'What was the overall experience rating?',
+			type: INPUT_TYPES.select,
+			value: '',
+			options: [
+				{ value: 1, displayValue: 'Positive' },
+				{ value: 0, displayValue: 'Negative' }
+			]
+		},
+		validation: {}
 	}
-	// figure: {
-	// 	elementConfig: {
-	// 		label: 'Figure',
-	// 		hint: 'Upload a figure from your computer',
-	// 		type: INPUT_TYPES.file,
-	// 		value: ''
-	// 	},
-	// 	validation: {}
-	// },
-	// experienceRating: {
-	// 	elementConfig: {
-	// 		label: 'Overall experience',
-	// 		hint: 'What was the overall experience rating?',
-	// 		type: INPUT_TYPES.select,
-	// 		value: '',
-	// 		options: [
-	// 			{ value: 1, displayValue: 'Positive' },
-	// 			{ value: 0, displayValue: 'Negative' }
-	// 		]
-	// 	},
-	// 	validation: {}
-	// }
 };

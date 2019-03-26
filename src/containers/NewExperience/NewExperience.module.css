@@ -12,6 +12,10 @@
 	font-size: var(--font-reg);
 }
 
+.NewExperience__Filters {
+	width: 100%;
+}
+
 .NewExperience__Form {
 	width: 100%;
 	flex: 1;

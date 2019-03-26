@@ -66,8 +66,6 @@ const InputGroup = props => {
 		/>
 	) : null;
 
-	console.log(props.configuration);
-
 	let inputElement;
 	if (label) {
 		// * Create the input element type based on props
@@ -79,7 +77,7 @@ const InputGroup = props => {
 				inputElement = (
 					<textarea
 						className={inputElementClasses.join(' ')}
-						{...props.elementConfig}
+						{...props.configuration}
 						value={props.value}
 						onChange={props.changed}
 						id={props.id}
@@ -92,11 +90,11 @@ const InputGroup = props => {
 				inputElement = (
 					<select
 						className={inputElementClasses.join(' ')}
-						value={props.value}
+						value={props.configuration.value}
 						onChange={props.changed}
 						id={props.id}
 						name={props.name}>
-						{props.elementConfig.options.map(option => (
+						{props.configuration.options.map(option => (
 							<option key={option.value} value={option.value}>
 								{option.displayValue}
 							</option>

@@ -1,0 +1,12 @@
+.FormFilters {
+	width: inherit;
+	height: inherit;
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	padding: 0 var(--triple);
+}
+
+.FormFilters__Filter {
+	min-width: 33%;
+}
