@@ -8,21 +8,26 @@ import {
 } from '../../store/newExperience/newExperience.actions';
 import * as selectors from '../../store/selectors';
 import css from './NewExperience.module.css';
-import { disciplineSelector } from './_disciplineSelectorConfig';
+import { disciplineSelect } from './_disciplineSelectorConfig';
+import { topicsRequiredSelect } from './_topicSelectorConfig';
 import { newExpForm } from './_newExpFormConfig';
-import { wellSelector } from './_wellSelectorConfig';
+import { wellSelect } from './_wellSelectorConfig';
 import Form from '../../components/Form/Form';
+import { DISCIPLINES } from '../../_utils/constants';
 
 class NewExperience extends Component {
 	state = {
-		wellsList: { ...wellSelector },
-		disciplineList: { ...disciplineSelector },
+		wellsList: { ...wellSelect },
+		disciplinesList: { ...disciplineSelect },
+		topicsRequired: {
+			...topicsRequiredSelect(DISCIPLINES[1].displayValue)
+		},
 		formConfig: { ...newExpForm }
 	};
 
 	wellSelectHandler = event => this.props.onSetWell(event);
 	disciplineSelectHandler = event => this.props.onSetDiscipline(event);
-
+	topicsSelectHandler = event => console.log('topic select handler');
 	render() {
 		const formTitle = 'Create new experience';
 		const subtitle =
@@ -40,12 +45,25 @@ class NewExperience extends Component {
 		const disciplineSelect = this.props.well ? (
 			<InputGroup
 				configuration={
-					this.state.disciplineList.disciplines.elementConfig
+					this.state.disciplinesList.disciplines.elementConfig
 				}
-				validation={this.state.disciplineList.disciplines.validation}
+				validation={this.state.disciplinesList.disciplines.validation}
 				changed={this.disciplineSelectHandler}
 			/>
 		) : null;
+
+		const topicSelect =
+			this.props.well && this.props.discipline ? (
+				<InputGroup
+					configuration={
+						this.state.topicsRequired.topicsRequired.elementConfig
+					}
+					validation={
+						this.state.topicsRequired.topicsRequired.validation
+					}
+					changed={this.topicsSelectHandler}
+				/>
+			) : null;
 
 		const form =
 			this.props.well && this.props.discipline ? (
@@ -63,6 +81,7 @@ class NewExperience extends Component {
 				<section className={css.NewExperience__Filters}>
 					{wellSelect}
 					{disciplineSelect}
+					{topicSelect}
 				</section>
 				<section className={css.NewExperience__Form}>{form}</section>
 			</article>
@@ -72,7 +91,8 @@ class NewExperience extends Component {
 
 const mapStateToProps = state => ({
 	well: selectors.getWell(state),
-	discipline: selectors.getDiscipline(state)
+	discipline: selectors.getDiscipline(state),
+	topicsRequired: selectors.getTopicsRequired(state)
 });
 
 const mapDispatchToProps = dispatch => ({

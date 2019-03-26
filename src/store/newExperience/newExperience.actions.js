@@ -13,3 +13,17 @@ export const setDiscipline = discipline => {
 		discipline: discipline
 	};
 };
+
+export const setTopicsRequired = topics => {
+	return {
+		type: actionTypes.SET_TOPICS_REQUIRED,
+		topicsRequired: topics
+	};
+};
+
+export const setTopicsOptional = topics => {
+	return {
+		type: actionTypes.SET_TOPICS_OPTIONAL,
+		topicsOptional: topics
+	};
+};

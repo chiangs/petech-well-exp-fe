@@ -35,3 +35,28 @@ export const WELLS = [
 	{ id: 10, displayValue: 'WellName10' },
 	{ id: 11, displayValue: 'WellName11' }
 ];
+
+export const TOPICS_REQUIRED = {
+	Geology: [
+		{ id: 0, displayValue: 'None selected' },
+		{ id: 1, displayValue: 'WellName1' },
+		{ id: 2, displayValue: 'WellName2' },
+		{ id: 3, displayValue: 'WellName3' },
+		{ id: 4, displayValue: 'WellName4' }
+	]
+};
+
+export const TOPICS_OPTIONAL = [
+	{ id: 0, displayValue: 'None selected' },
+	{ id: 1, displayValue: 'WellName1' },
+	{ id: 2, displayValue: 'WellName2' },
+	{ id: 3, displayValue: 'WellName3' },
+	{ id: 4, displayValue: 'WellName4' },
+	{ id: 5, displayValue: 'WellName5' },
+	{ id: 6, displayValue: 'WellName6' },
+	{ id: 7, displayValue: 'WellName7' },
+	{ id: 8, displayValue: 'WellName8' },
+	{ id: 9, displayValue: 'WellName9' },
+	{ id: 10, displayValue: 'WellName10' },
+	{ id: 11, displayValue: 'WellName11' }
+];

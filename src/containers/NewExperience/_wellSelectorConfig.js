@@ -1,6 +1,6 @@
 import { INPUT_TYPES, WELLS } from '../../_utils/constants';
 
-export const wellSelector = {
+export const wellSelect = {
 	wells: {
 		elementConfig: {
 			label: 'Select well',
