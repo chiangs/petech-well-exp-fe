@@ -12,26 +12,26 @@ export const PASSWORD_SHOW = 'Show';
 export const PASSWORD_HIDE = 'Hide';
 
 export const DISCIPLINES = [
-	{ value: 0, displayValue: 'None selected' },
-	{ value: 1, displayValue: 'Geology' },
-	{ value: 2, displayValue: 'Operation Geology' },
-	{ value: 3, displayValue: 'Petrophysics' },
-	{ value: 4, displayValue: 'Production' },
-	{ value: 5, displayValue: 'Reservoir' },
-	{ value: 6, displayValue: 'Well Leader' }
+	{ id: 0, displayValue: 'None selected' },
+	{ id: 1, displayValue: 'Geology' },
+	{ id: 2, displayValue: 'Operation Geology' },
+	{ id: 3, displayValue: 'Petrophysics' },
+	{ id: 4, displayValue: 'Production' },
+	{ id: 5, displayValue: 'Reservoir' },
+	{ id: 6, displayValue: 'Well Leader' }
 ];
 
 export const WELLS = [
-	{ value: 0, displayValue: 'None selected' },
-	{ value: 1, displayValue: 'WellName1' },
-	{ value: 2, displayValue: 'WellName2' },
-	{ value: 3, displayValue: 'WellName3' },
-	{ value: 4, displayValue: 'WellName4' },
-	{ value: 5, displayValue: 'WellName5' },
-	{ value: 6, displayValue: 'WellName6' },
-	{ value: 7, displayValue: 'WellName7' },
-	{ value: 8, displayValue: 'WellName8' },
-	{ value: 9, displayValue: 'WellName9' },
-	{ value: 10, displayValue: 'WellName10' },
-	{ value: 11, displayValue: 'WellName11' }
+	{ id: 0, displayValue: 'None selected' },
+	{ id: 1, displayValue: 'WellName1' },
+	{ id: 2, displayValue: 'WellName2' },
+	{ id: 3, displayValue: 'WellName3' },
+	{ id: 4, displayValue: 'WellName4' },
+	{ id: 5, displayValue: 'WellName5' },
+	{ id: 6, displayValue: 'WellName6' },
+	{ id: 7, displayValue: 'WellName7' },
+	{ id: 8, displayValue: 'WellName8' },
+	{ id: 9, displayValue: 'WellName9' },
+	{ id: 10, displayValue: 'WellName10' },
+	{ id: 11, displayValue: 'WellName11' }
 ];

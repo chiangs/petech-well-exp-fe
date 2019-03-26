@@ -6,11 +6,21 @@ import css from './InputGroup.module.css';
 // * this ensures that an input group is properly labeled and structured, otherwise not rendered to DOM
 
 const InputGroup = props => {
-	const [value, newValue] = useState(props.configuration.options[0].value);
+	// * Uses hook to update local state and then signal container to dispatch
+	const initialValue =
+		props.configuration.type === INPUT_TYPES.select
+			? props.configuration.options[0].id
+			: props.configuration.id;
+
+	const [value, newValue] = useState(initialValue);
+
 	const inputChangeHandler = event => {
-		const updatedValue = event.target.value;
+		const updatedValue =
+			event.target.value > 0 ? event.target.value : value;
 		newValue(updatedValue);
-		props.changed(updatedValue);
+		props.configuration.type === INPUT_TYPES.select
+			? props.changed(props.configuration.options[updatedValue])
+			: props.changed(updatedValue);
 	};
 
 	const labelClasses = [css.InputGroup__Label];
@@ -56,6 +66,33 @@ const InputGroup = props => {
 		/>
 	) : null;
 
+	const textArea = props => (
+		<textarea
+			className={inputElementClasses.join(' ')}
+			{...props.configuration}
+			value={props.value}
+			onChange={props.changed}
+			id={props.id}
+			name={props.name}
+			rows="10"
+		/>
+	);
+
+	const selectOption = props => (
+		<select
+			className={inputElementClasses.join(' ')}
+			value={value}
+			onChange={inputChangeHandler}
+			id={props.id}
+			name={props.name}>
+			{props.configuration.options.map(option => (
+				<option key={option.id} value={option.id}>
+					{option.displayValue}
+				</option>
+			))}
+		</select>
+	);
+
 	let inputElement;
 	if (label) {
 		// * Create the input element type based on props
@@ -64,33 +101,10 @@ const InputGroup = props => {
 				inputElement = inputElementDefault;
 				break;
 			case INPUT_TYPES.textarea:
-				inputElement = (
-					<textarea
-						className={inputElementClasses.join(' ')}
-						{...props.configuration}
-						value={props.value}
-						onChange={props.changed}
-						id={props.id}
-						name={props.name}
-						rows="10"
-					/>
-				);
+				inputElement = textArea(props);
 				break;
 			case INPUT_TYPES.select:
-				inputElement = (
-					<select
-						className={inputElementClasses.join(' ')}
-						value={value}
-						onChange={inputChangeHandler}
-						id={props.id}
-						name={props.name}>
-						{props.configuration.options.map(option => (
-							<option key={option.value} value={option.value}>
-								{option.displayValue}
-							</option>
-						))}
-					</select>
-				);
+				inputElement = selectOption(props);
 				break;
 			default:
 				inputElement = inputElementDefault;
