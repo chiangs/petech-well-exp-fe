@@ -1,29 +1,16 @@
-import React, { useState, useEffect, useReducer } from 'react';
-import {
-	INPUT_TYPES,
-	PASSWORD_HIDE,
-	PASSWORD_SHOW
-} from '../../../_utils/constants';
+import React, { useState } from 'react';
+import { INPUT_TYPES } from '../../../_utils/constants';
 import css from './InputGroup.module.css';
-import { setWell } from '../../../store/newExperience/newExperience.actions';
 
 // * Creation of input group is based on having a label configuration
 // * this ensures that an input group is properly labeled and structured, otherwise not rendered to DOM
 
 const InputGroup = props => {
-	const reducer = props.reducer;
 	const [value, newValue] = useState(props.configuration.options[0].value);
-	// const updateState = event => newValue(event.target.value);
-	// useEffect(() => {
-	// 	return () => props.changed(value);
-	// }, [value]);
-
-	const [well, dispatch] = useReducer(reducer, value);
-
 	const inputChangeHandler = event => {
 		const updatedValue = event.target.value;
 		newValue(updatedValue);
-		dispatch(setWell(updatedValue));
+		props.changed(updatedValue);
 	};
 
 	const labelClasses = [css.InputGroup__Label];

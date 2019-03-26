@@ -37,9 +37,7 @@ class NewExperience extends Component {
 			<InputGroup
 				configuration={this.state.wellsList.wells.elementConfig}
 				validation={this.state.wellsList.wells.validation}
-				// changed={this.wellSelectHandler}
-				reducer={newExperienceReducer}
-				dispatchMethod={setWell}
+				changed={this.wellSelectHandler}
 			/>
 		) : (
 			<Loader />
