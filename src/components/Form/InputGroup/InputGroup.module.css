@@ -3,6 +3,7 @@
 	min-height: var(--quad);
 	margin: var(--double);
 	max-width: 48%;
+	font-size: var(--font-form-input);
 }
 
 .InputGroup__LabelGroup {
@@ -22,7 +23,6 @@
 /* TODO: Maybe colorize the border? */
 .InputGroup__InputElement {
 	width: 100%;
-	min-height: var(--title-space);
 	border: 1px solid var(--black);
 	border-radius: var(--border-radius);
 	background-color: var(--white);

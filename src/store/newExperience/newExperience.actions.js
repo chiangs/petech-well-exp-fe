@@ -1,15 +1,15 @@
 import * as actionTypes from '../actionTypes';
 
-export const setWell = name => {
+export const setWell = wellId => {
 	return {
 		type: actionTypes.SET_WELL,
-		wellName: name
+		well: wellId
 	};
 };
 
-export const setDiscipline = discipline => {
+export const setDiscipline = disciplineId => {
 	return {
 		type: actionTypes.SET_DISCIPLINE,
-		discipline: discipline
+		disciplineId: disciplineId
 	};
 };

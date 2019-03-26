@@ -1,7 +1,7 @@
 import { INPUT_TYPES, DISCIPLINES } from '../../_utils/constants';
 
-export const newExpFilters = {
-	discipline: {
+export const disciplineSelector = {
+	disciplines: {
 		elementConfig: {
 			label: 'Select your discipline',
 			hint: 'This determines the reviewer.',

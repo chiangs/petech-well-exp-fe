@@ -1,30 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import {
 	INPUT_TYPES,
 	PASSWORD_HIDE,
 	PASSWORD_SHOW
 } from '../../../_utils/constants';
-import Button from '../../Button/Button';
 import css from './InputGroup.module.css';
+import { setWell } from '../../../store/newExperience/newExperience.actions';
 
 // * Creation of input group is based on having a label configuration
 // * this ensures that an input group is properly labeled and structured, otherwise not rendered to DOM
 
 const InputGroup = props => {
+	const reducer = props.reducer;
+	const [value, newValue] = useState(props.configuration.options[0].value);
+	// const updateState = event => newValue(event.target.value);
+	// useEffect(() => {
+	// 	return () => props.changed(value);
+	// }, [value]);
+
+	const [well, dispatch] = useReducer(reducer, value);
+
+	const inputChangeHandler = event => {
+		const updatedValue = event.target.value;
+		newValue(updatedValue);
+		dispatch(setWell(updatedValue));
+	};
+
 	const labelClasses = [css.InputGroup__Label];
 	const inputElementClasses = [css.InputGroup__InputElement];
-	const passwordToggleText = props.configuration.hidden
-		? PASSWORD_SHOW
-		: PASSWORD_HIDE;
-	// TODO: Add in optional other potential visual signals and styling
-	// TODO: Complete classes push for validation feedback
-	// const optionLabel = props.shouldValidate.required ? null : (
-	//     <i> (optional)</i>
-	// );
-	// if (!props.valid && props.shouldValidate && props.showErrors) {
-	//     labelClasses.push(css.Invalid);
-	//     inputClasses.push(css.Invalid);
-	// }
 
 	// * Define the label
 	const label =
@@ -90,8 +93,8 @@ const InputGroup = props => {
 				inputElement = (
 					<select
 						className={inputElementClasses.join(' ')}
-						value={props.configuration.value}
-						onChange={props.changed}
+						value={value}
+						onChange={inputChangeHandler}
 						id={props.id}
 						name={props.name}>
 						{props.configuration.options.map(option => (
@@ -100,30 +103,6 @@ const InputGroup = props => {
 							</option>
 						))}
 					</select>
-				);
-				break;
-			case INPUT_TYPES.password:
-				inputElement = (
-					<span className={css.PasswordInput}>
-						<input
-							className={inputElementClasses.join(' ')}
-							value={props.value}
-							onChange={props.changed}
-							id={props.id}
-							name={props.name}
-							type={
-								props.elementConfig.hidden
-									? props.elementType
-									: INPUT_TYPES.text
-							}
-						/>
-						<Button
-							type="button"
-							passwordToggle={true}
-							clicked={props.togglePassword}>
-							{passwordToggleText}
-						</Button>
-					</span>
 				);
 				break;
 			default:

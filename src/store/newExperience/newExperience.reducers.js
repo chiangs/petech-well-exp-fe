@@ -6,19 +6,17 @@ const initialState = {
 	discipline: null
 };
 
+const setWell = (state, action) => updateStateObj(state, { well: action.well });
+
+const setDiscipline = (state, action) =>
+	updateStateObj(state, { discipline: action.disciplineId });
+
 const newExperience = (state = initialState, action) => {
-	let updatedProperties = {};
 	switch (action.type) {
 		case actionTypes.SET_WELL:
-			updatedProperties = {
-				well: action.wellName
-			};
-			return updateStateObj(state, updatedProperties);
+			return setWell(state, action);
 		case actionTypes.SET_DISCIPLINE:
-			updatedProperties = {
-				discipline: action.discipline
-			};
-			return updateStateObj(state, updatedProperties);
+			return setDiscipline(state, action);
 		default:
 			return state;
 	}

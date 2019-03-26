@@ -44,6 +44,7 @@ font-feature-settings: 'ss01'; */
 	--font-weight-bold: 700;
 	--font-min: 16px;
 	--font-reg: 18px;
+	--font-form-input: 20px;
 	--font-subtitle: 30px;
 	--font-title: 50px;
 	--letter-spacing: -0.25px;
