@@ -15,6 +15,7 @@ import { wellSelect } from './_wellSelectorConfig';
 import Form from '../../components/Form/Form';
 import { DISCIPLINES } from '../../_utils/constants';
 
+// TODO: instead of show/hide, how about disable?
 class NewExperience extends Component {
 	state = {
 		wellsList: { ...wellSelect },
