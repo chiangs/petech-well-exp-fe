@@ -21,21 +21,33 @@
 
 .NoMatch__Instructions {
 	flex: 2;
-	background-color: var(--equinor-supporting-blue-light);
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--equinor-supporting-blue);
 	padding: var(--base) 0;
 }
 
 .NoMatch__Instructions p {
-	font-size: var(--font-reg);
+	font-size: var(--font-form-input);
+	color: var(--pink);
 	margin: var(--base);
 }
 
 .NoMatch__Instructions a {
-	color: var(--equinor-supporting-blue);
+	font-size: var(--font-form-input);
 	font-family: var(--font-bold);
+	color: var(--font-form-input);
 }
 
 .NoMatch__Instructions a:hover {
 	color: var(--equinor-main);
+}
+
+.NoMatch__Pointer {
+	align-self: flex-start;
+}
+
+.NoMatch__Pointer img {
+	height: var(--title-space);
 }

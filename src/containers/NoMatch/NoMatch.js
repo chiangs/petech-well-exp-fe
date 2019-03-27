@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import css from './NoMatch.module.css';
 import { Link } from 'react-router-dom';
 import { index } from '../../components/Navigation/_routes';
+import EquinorPointer from '../../components/EquinorPointer/EquinorPointer';
 
 export default class NoMatch extends Component {
 	render() {
@@ -21,6 +22,10 @@ export default class NoMatch extends Component {
 				<section className={css.NoMatch__Instructions}>
 					<p>
 						{instructions} <Link to={index.route}>{linkText}</Link>
+						<br />
+						<span className={css.NoMatch__Pointer}>
+							<EquinorPointer />
+						</span>
 					</p>
 				</section>
 			</article>

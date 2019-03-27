@@ -5,7 +5,7 @@
 	flex-direction: column;
 }
 
-.Home__Title {
+.Home__Title h1 {
 }
 
 .Home__Subtitle {
@@ -15,9 +15,22 @@
 	font-size: var(--font-reg);
 }
 
+.Home__Pointer {
+	width: inherit;
+	height: var(--quad);
+	display: flex;
+	position: absolute;
+	left: 26%;
+}
+
 .Home__Buttons {
 	padding: var(--title-space);
 	text-align: center;
+}
+
+.Home__Buttons p {
+	font-family: var(--font-bold);
+	font-size: var(--font-label);
 }
 
 .Home__Buttons ul {
@@ -30,12 +43,19 @@
 }
 
 .Home__InfoSection {
-	margin: 0 25%;
-	padding: var(--title-space);
-	border: 1px solid var(--equinor-supporting-blue);
 	border-radius: var(--border-radius);
+	background-color: var(--equinor-supporting-blue-light);
+	padding: var(--title-space);
+	margin: 0 25%;
+}
+
+.Home__InfoSection h3 {
+	font-size: var(--font-label);
+	font-family: var(--font-bold);
+	color: var(--equinor-supporting-blue);
 }
 
 .Home__InfoSection p {
 	margin: var(--double) 0;
+	color: var(--equinor-main);
 }

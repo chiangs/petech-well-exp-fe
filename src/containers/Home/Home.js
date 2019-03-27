@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../../components/Button/Button';
 import css from './Home.module.css';
+import EquinorPointer from '../../components/EquinorPointer/EquinorPointer';
 
 export default class Home extends Component {
 	navTo(route) {
@@ -12,7 +13,7 @@ export default class Home extends Component {
 	render() {
 		const title = 'PETECH Well Experience';
 		const subtitle = 'Subtitle placeholder text.';
-		const buttonsPrompt = 'Where do you want to begin?';
+		const buttonsPrompt = 'Start here.';
 		const buttons = [
 			{
 				label: 'Create new experience',
@@ -50,18 +51,21 @@ export default class Home extends Component {
 					<ul>{buttonsList}</ul>
 				</section>
 				<section className={css.Home__InfoSection}>
-					<p>
+					<h3>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Deserunt eius dignissimos veritatis voluptate, rem ipsum
 						id voluptas quaerat harum veniam omnis nostrum sequi
 						tempore iusto quod? Dolorem fuga tenetur architecto.
-					</p>
+					</h3>
 					<p>
 						Lorem ipsum, dolor sit amet consectetur adipisicing
 						elit. Earum et corporis eaque? Temporibus cumque facere
 						est, in quisquam ex iure tempore sunt, sed eum,
 						accusantium officiis blanditiis quae saepe autem.
 					</p>
+					<span className={css.Home__Pointer}>
+						<EquinorPointer />
+					</span>
 				</section>
 			</article>
 		);

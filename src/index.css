@@ -75,6 +75,7 @@ font-feature-settings: 'ss01'; */
 	--black: rgba(51, 51, 51);
 	--grey: rgba(242, 242, 242);
 	--grey-dark: rgba(102, 102, 102);
+	--pink: #ffeaef;
 	--error: rgba(var(--heritage-red));
 	--error-hover: rgba(89, 0, 25);
 	--equinor-main: rgba(var(--energy-red));
@@ -88,6 +89,7 @@ font-feature-settings: 'ss01'; */
 	--equinor-supporting-highlight: rgba(var(--spruce-wood));
 	/* *Default heights */
 	--navigation-height-desktop: calc(var(--quad) * 4);
+	--boxshadow: 0px 6px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
 html {

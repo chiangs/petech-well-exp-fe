@@ -22,6 +22,7 @@
 
 .SelectedDiscipline__Discipline {
 	font-family: var(--font-bold-italic);
+	color: var(--equinor-supporting-green);
 }
 
 .NewExperience__Filters {
