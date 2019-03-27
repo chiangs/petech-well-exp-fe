@@ -4,6 +4,6 @@ export const buttonTypes = {
 	button: css.Button,
 	default: css.Default,
 	submit: css.Submit,
-	cance: css.Cancel,
+	cancel: css.Cancel,
 	warning: css.Warning
 };

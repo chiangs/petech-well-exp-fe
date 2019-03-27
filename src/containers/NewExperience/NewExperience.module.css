@@ -12,11 +12,24 @@
 	font-size: var(--font-reg);
 }
 
+.SelectedDiscipline {
+	font-size: var(--font-label);
+}
+
+.SelectedDiscipline__Label {
+	font-family: var(--font--main);
+}
+
+.SelectedDiscipline__Discipline {
+	font-family: var(--font-bold-italic);
+}
+
 .NewExperience__Filters {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: var(--double);
 }
 
 .NewExperience__Form {

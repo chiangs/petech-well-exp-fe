@@ -4,8 +4,11 @@ import { updateStateObj } from '../utils';
 const initialState = {
 	well: null,
 	discipline: null,
-	topicsRequired: [],
-	topicsOptional: []
+	currTopic: null
+};
+
+const clearState = (state, action) => {
+	return updateStateObj(state, initialState);
 };
 
 const setWell = (state, action) => {
@@ -20,11 +23,17 @@ const setDiscipline = (state, action) => {
 		: state;
 };
 
-const setTopicsRequired = (state, action) =>
-	updateStateObj(state, { topicsRequired: action.topicsRequired });
+const setCurrTopic = (state, action) => {
+	return action.currTopic.id > 0
+		? updateStateObj(state, { currTopic: action.currTopic })
+		: state;
+};
 
-const setTopicsOptional = (state, action) =>
-	updateStateObj(state, { topicsOptional: action.topicsOptional });
+// const setTopicsRequired = (state, action) =>
+// 	updateStateObj(state, { topicsRequired: action.topicsRequired });
+
+// const setTopicsOptional = (state, action) =>
+// 	updateStateObj(state, { topicsOptional: action.topicsOptional });
 
 const newExperience = (state = initialState, action) => {
 	switch (action.type) {
@@ -32,10 +41,14 @@ const newExperience = (state = initialState, action) => {
 			return setWell(state, action);
 		case actionTypes.SET_DISCIPLINE:
 			return setDiscipline(state, action);
-		case actionTypes.SET_TOPICS_REQUIRED:
-			return setTopicsRequired(state, action);
-		case actionTypes.SET_TOPICS_OPTIONAL:
-			return setTopicsOptional(state, action);
+		case actionTypes.SET_CURR_TOPIC:
+			return setCurrTopic(state, action);
+		case actionTypes.STARTOVER:
+			return clearState(state, action);
+		// case actionTypes.SET_TOPICS_REQUIRED:
+		// 	return setTopicsRequired(state, action);
+		// case actionTypes.SET_TOPICS_OPTIONAL:
+		// 	return setTopicsOptional(state, action);
 		default:
 			return state;
 	}

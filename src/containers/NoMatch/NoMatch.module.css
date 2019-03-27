@@ -15,7 +15,7 @@
 }
 
 .NoMatch__Subtitle {
-	font-size: var(--font-subtitle);
+	font-size: var(--font-label);
 	margin: var(--title-space) var(--base);
 }
 

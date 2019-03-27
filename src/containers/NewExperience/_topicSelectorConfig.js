@@ -1,13 +1,13 @@
-import { INPUT_TYPES, TOPICS_REQUIRED } from '../../_utils/constants';
-
-export const topicsRequiredSelect = discipline => ({
-	topicsRequired: {
+import { INPUT_TYPES, TOPICS } from '../../_utils/constants';
+// ! Redo this logic
+export const topicSelectConfig = topics => ({
+	topics: {
 		elementConfig: {
-			label: 'Select well',
-			hint: 'This is required.',
+			label: 'Select topic',
+			hint: 'These are required for selected discipline.',
 			type: INPUT_TYPES.select,
 			value: '',
-			options: [...TOPICS_REQUIRED[discipline]]
+			options: [...topics]
 		},
 		validation: {}
 	}

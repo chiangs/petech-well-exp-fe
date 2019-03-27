@@ -4,6 +4,8 @@ import css from './Home.module.css';
 
 export default class Home extends Component {
 	navTo(route) {
+		console.log(this.props.history);
+
 		this.props.history.push(route);
 	}
 
@@ -28,7 +30,7 @@ export default class Home extends Component {
 			}
 		];
 		const buttonsList = buttons.map(buttonConfig => (
-			<li className={css.Home__Button}>
+			<li className={css.Home__Button} key={buttonConfig.route}>
 				<Button
 					button={buttonConfig}
 					btnClick={() => this.navTo(buttonConfig.route)}

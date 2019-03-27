@@ -2,6 +2,7 @@ import React from 'react';
 import css from './Form.module.css';
 import InputGroup from './InputGroup/InputGroup';
 
+// TODO: add changed prop to InputGroups and handle it
 // * Reusable form that takes in a configuration JS object.
 const Form = props => {
 	// * create list of form elements

@@ -6,6 +6,21 @@
 	font-size: var(--font-form-input);
 }
 
+.Disabled {
+	font-family: var(--font-main-italic);
+	color: var(--grey-dark);
+}
+
+.InputGroup__InputElement.Disabled {
+	width: 100%;
+	border: 1px solid var(--grey);
+	border-radius: var(--border-radius);
+	background-color: var(--white);
+	font: var(--font-main);
+	padding: var(--single) var(--double);
+	margin-top: var(--double);
+}
+
 .InputGroup__LabelGroup {
 	width: 100%;
 }

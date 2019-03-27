@@ -14,16 +14,27 @@ export const setDiscipline = discipline => {
 	};
 };
 
-export const setTopicsRequired = topics => {
+export const setCurrTopic = topic => {
 	return {
-		type: actionTypes.SET_TOPICS_REQUIRED,
-		topicsRequired: topics
+		type: actionTypes.SET_CURR_TOPIC,
+		currTopic: topic
 	};
 };
 
-export const setTopicsOptional = topics => {
-	return {
-		type: actionTypes.SET_TOPICS_OPTIONAL,
-		topicsOptional: topics
-	};
-};
+export const clearState = () => ({
+	type: actionTypes.STARTOVER
+});
+
+// export const setTopicsRequired = topics => {
+// 	return {
+// 		type: actionTypes.SET_TOPICS_REQUIRED,
+// 		topicsRequired: topics
+// 	};
+// };
+
+// export const setTopicsOptional = topics => {
+// 	return {
+// 		type: actionTypes.SET_TOPICS_OPTIONAL,
+// 		topicsOptional: topics
+// 	};
+// };
