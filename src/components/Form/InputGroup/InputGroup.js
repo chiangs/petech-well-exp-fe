@@ -35,11 +35,15 @@ const InputGroup = props => {
 
 		const inputChangeHandler = event => {
 			const updatedValue =
-				event.target.value > 0 ? event.target.value : value;
+				event.target.value > 0 ? +event.target.value : +value;
 			newValue(updatedValue);
-			props.configuration.type === INPUT_TYPES.select
-				? props.changed(props.configuration.options[updatedValue])
-				: props.changed(updatedValue);
+			if (props.configuration.type === INPUT_TYPES.select) {
+				const optionItem = props.configuration.options.find(
+					item => item.id === updatedValue
+				);
+				return props.changed(optionItem);
+			}
+			props.changed(updatedValue);
 		};
 
 		// * Define the label

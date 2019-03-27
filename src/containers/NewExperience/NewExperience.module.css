@@ -32,9 +32,7 @@
 	margin-bottom: var(--double);
 }
 
-.NewExperience__Form {
+.NewExperience__FormSection {
 	width: 100%;
 	flex: 1;
-	border: 1px solid var(--grey);
-	border-radius: var(--border-radius);
 }

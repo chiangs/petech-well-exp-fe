@@ -16,9 +16,7 @@ class App extends Component {
 		const routes = (
 			<Switch>
 				<Route exact path={index.route} component={Home} />
-				{/* <Route exact path={newExp.route} render={() => 
-				<New />} /> */}
-				<Route exact path={newExp.route} component={New} />
+				<Route exact path={newExp.route} render={() => <New />} />
 				<Route exact path={noMatch.route} component={NoMatch} />
 				<Route component={NoMatch} />
 			</Switch>

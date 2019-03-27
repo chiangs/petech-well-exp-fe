@@ -4,6 +4,8 @@
 	padding: var(--base) var(--triple);
 	display: flex;
 	flex-direction: column;
+	border: 1px solid var(--grey);
+	border-radius: var(--border-radius);
 }
 
 .Form__FormControls__Observations {

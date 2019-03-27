@@ -18,6 +18,7 @@ import { disciplineSelect } from './_disciplineSelectorConfig';
 import { newExpForm } from './_newExpFormConfig';
 import { topicSelectConfig } from './_topicSelectorConfig';
 import { wellSelect } from './_wellSelectorConfig';
+import { withRouter } from 'react-router-dom';
 
 // TODO: start over btn
 // TODO: handle well change
@@ -37,7 +38,7 @@ class NewExperience extends Component {
 					topicsList: [...TOPICS],
 					formConfig: { ...newExpForm }
 				});
-			}, 500);
+			}, 1000);
 		});
 	}
 
@@ -173,7 +174,9 @@ class NewExperience extends Component {
 					{startOverBtn}
 				</section>
 				{formFilterSection}
-				<section className={css.NewExperience__Form}>{form}</section>
+				<section className={css.NewExperience__FormSection}>
+					{form}
+				</section>
 			</article>
 		);
 	}
@@ -192,7 +195,9 @@ const mapDispatchToProps = dispatch => ({
 	onClearState: () => dispatch(clearState())
 });
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(NewExperience);
+export default withRouter(
+	connect(
+		mapStateToProps,
+		mapDispatchToProps
+	)(NewExperience)
+);
