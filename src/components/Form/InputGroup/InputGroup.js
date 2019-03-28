@@ -35,16 +35,21 @@ const InputGroup = props => {
 		const [value, newValue] = useState(initialValue);
 
 		const inputChangeHandler = event => {
-			const updatedValue =
-				event.target.value > 0 ? +event.target.value : +value;
-			newValue(updatedValue);
+			let updatedValue;
 			if (props.configuration.type === INPUT_TYPES.select) {
+				updatedValue =
+					event.target.value > 0 ? +event.target.value : +value;
 				const optionItem = props.configuration.options.find(
 					item => item.id === updatedValue
 				);
+				newValue(updatedValue);
 				return props.changed(optionItem);
+			} else {
+				const formElementId = event.target.id;
+				updatedValue = event.target.value;
+				newValue(updatedValue);
+				props.changed(updatedValue, formElementId);
 			}
-			props.changed(updatedValue);
 		};
 
 		// * Define the label
@@ -91,39 +96,37 @@ const InputGroup = props => {
 			<textarea
 				className={inputElementClasses.join(' ')}
 				{...props.configuration}
-				value={props.value}
+				value={value}
 				onChange={inputChangeHandler}
 				id={props.id}
-				name={props.name}
+				name={props.id}
 				rows="10"
 			/>
 		);
 
-		const selectOption = props => {
-			return (
-				<select
-					className={inputElementClasses.join(' ')}
-					value={value}
-					onChange={inputChangeHandler}
-					id={props.id}
-					name={props.name}>
-					{props.configuration.options.map(option => {
-						const optionClass = [css.Select__Option];
-						const optionClasses = option.required
-							? optionClass.concat(css.Required)
-							: optionClass;
-						return (
-							<option
-								key={option.id}
-								value={option.id}
-								className={optionClasses.join(' ')}>
-								{option.displayValue}
-							</option>
-						);
-					})}
-				</select>
-			);
-		};
+		const selectOption = props => (
+			<select
+				className={inputElementClasses.join(' ')}
+				value={value}
+				onChange={inputChangeHandler}
+				id={props.id}
+				name={props.id}>
+				{props.configuration.options.map(option => {
+					const optionClass = [css.Select__Option];
+					const optionClasses = option.required
+						? optionClass.concat(css.Required)
+						: optionClass;
+					return (
+						<option
+							key={option.id}
+							value={option.id}
+							className={optionClasses.join(' ')}>
+							{option.displayValue}
+						</option>
+					);
+				})}
+			</select>
+		);
 
 		let inputElement;
 		if (label) {

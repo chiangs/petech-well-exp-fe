@@ -20,14 +20,17 @@ const Form = props => {
 	return (
 		<form className={css.Form}>
 			<section className={css.Form__FormControls__Observations}>
-				{formElements.slice(0, observations).map(element => (
-					<InputGroup
-						key={element.id}
-						show={true}
-						configuration={element.config}
-						validation={element.validation}
-					/>
-				))}
+				{formElements.slice(0, observations).map(element => {
+					return (
+						<InputGroup
+							key={element.id}
+							id={element.id}
+							configuration={element.config}
+							validation={element.validation}
+							changed={props.changed}
+						/>
+					);
+				})}
 			</section>
 			<section className={css.Form__FormControls__SupportingDocs}>
 				{formElements
@@ -35,7 +38,6 @@ const Form = props => {
 					.map(element => (
 						<InputGroup
 							key={element.id}
-							show={true}
 							configuration={element.config}
 							validation={element.validation}
 						/>

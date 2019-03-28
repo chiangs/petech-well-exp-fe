@@ -50,6 +50,7 @@ class NewExperience extends Component {
 	createDisciplineSelect = (disciplinesList, wellsList, topicsList) =>
 		disciplinesList && wellsList && topicsList ? (
 			<InputGroup
+				id="disciplineSelect"
 				configuration={
 					this.state.disciplinesList.disciplines.elementConfig
 				}
@@ -63,6 +64,7 @@ class NewExperience extends Component {
 	createWellSelect = wellsList =>
 		wellsList && this.props.discipline ? (
 			<InputGroup
+				id="wellBoreSelect"
 				configuration={this.state.wellsList.wells.elementConfig}
 				validation={this.state.wellsList.wells.validation}
 				changed={this.wellSelectHandler}
@@ -71,9 +73,10 @@ class NewExperience extends Component {
 			<InputGroup disabled />
 		);
 
-	createRequiredTopicsSelect = topicsList => {
-		return this.props.well && topicsList ? (
+	createTopicsSelect = topicsList =>
+		this.props.well && topicsList ? (
 			<InputGroup
+				id="topicsSelect"
 				configuration={
 					topicSelectConfig(topicsList).topics.elementConfig
 				}
@@ -83,13 +86,11 @@ class NewExperience extends Component {
 		) : (
 			<InputGroup disabled />
 		);
-	};
 
-	createForm = formConfig => {
-		return formConfig && this.props.currTopic ? (
-			<Form formConfig={formConfig} />
+	createForm = formConfig =>
+		formConfig && this.props.currTopic ? (
+			<Form formConfig={formConfig} changed={this.formChangeHandler} />
 		) : null;
-	};
 
 	createStartOverButton = btnConfig =>
 		this.props.discipline ? (
@@ -100,10 +101,13 @@ class NewExperience extends Component {
 		) : null;
 
 	// * Form select event handlers
-	disciplineSelectHandler = event => this.props.onSetDiscipline(event);
-	wellSelectHandler = event =>
-		this.props.onSetWell(event, this.props.discipline);
-	topicsSelectHandler = event => this.props.onSetCurrTopic(event);
+	disciplineSelectHandler = value => this.props.onSetDiscipline(value);
+	wellSelectHandler = value =>
+		this.props.onSetWell(value, this.props.discipline);
+	topicsSelectHandler = value => this.props.onSetCurrTopic(value);
+	// TODO: handle all form cases to save to component state, and wait for save to save to store
+	formChangeHandler = (value, elementId) =>
+		console.log({ [elementId]: value });
 
 	render() {
 		const formTitle = 'Add experiences';
@@ -134,7 +138,7 @@ class NewExperience extends Component {
 			route: '/'
 		});
 		const wellSelect = this.createWellSelect(this.state.wellsList);
-		const topicSelect = this.createRequiredTopicsSelect(this.props.topics);
+		const topicSelect = this.createTopicsSelect(this.props.topics);
 		const formFilterSection = this.props.discipline ? (
 			<section className={css.NewExperience__Filters}>
 				{wellSelect}
