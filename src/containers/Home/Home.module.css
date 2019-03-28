@@ -8,6 +8,15 @@
 .Home__Title h1 {
 }
 
+.Title__Part1 {
+	letter-spacing: 0.05em;
+}
+
+.Title__Part2 {
+	font-family: var(--font-bold);
+	font-weight: 900;
+}
+
 .Home__Subtitle {
 }
 

@@ -5,18 +5,17 @@ import EquinorPointer from '../../components/EquinorPointer/EquinorPointer';
 
 export default class Home extends Component {
 	navTo(route) {
-		console.log(this.props.history);
-
 		this.props.history.push(route);
 	}
 
 	render() {
-		const title = 'PETECH Well Experience';
+		const title = 'PETECH';
+		const title2 = 'Well Experience';
 		const subtitle = 'Subtitle placeholder text.';
 		const buttonsPrompt = 'Start here.';
 		const buttons = [
 			{
-				label: 'Create new experience',
+				label: 'Add experiences',
 				type: 'submit',
 				icon: 'edit',
 				iconType: 'solid',
@@ -41,7 +40,10 @@ export default class Home extends Component {
 		return (
 			<article className={css.Home}>
 				<section className={css.Home__Title}>
-					<h1>{title}</h1>
+					<h1>
+						<span className={css.Title__Part1}>{title}</span>
+						<span className={css.Title__Part2}>{title2}</span>
+					</h1>
 				</section>
 				<section className={css.Home__Subtitle}>
 					<h2 className="italic">{subtitle}</h2>

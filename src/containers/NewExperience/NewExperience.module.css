@@ -6,6 +6,13 @@
 }
 
 .NewExperience__Title {
+	display: flex;
+	align-items: center;
+}
+
+.NewExperience__Title img {
+	height: var(--base);
+	margin-right: var(--single);
 }
 
 .NewExperience__Subtitle * {

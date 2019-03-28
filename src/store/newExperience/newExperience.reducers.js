@@ -4,7 +4,9 @@ import { updateStateObj } from '../utils';
 const initialState = {
 	well: null,
 	discipline: null,
-	currTopic: null
+	currTopic: null,
+	topicsRequired: [],
+	topicsOptional: []
 };
 
 const clearState = (state, action) => {
@@ -29,11 +31,11 @@ const setCurrTopic = (state, action) => {
 		: state;
 };
 
-// const setTopicsRequired = (state, action) =>
-// 	updateStateObj(state, { topicsRequired: action.topicsRequired });
+const setTopicsRequired = (state, action) =>
+	updateStateObj(state, { topicsRequired: action.topicsRequired });
 
-// const setTopicsOptional = (state, action) =>
-// 	updateStateObj(state, { topicsOptional: action.topicsOptional });
+const setTopicsOptional = (state, action) =>
+	updateStateObj(state, { topicsOptional: action.topicsOptional });
 
 const newExperience = (state = initialState, action) => {
 	switch (action.type) {
@@ -45,10 +47,10 @@ const newExperience = (state = initialState, action) => {
 			return setCurrTopic(state, action);
 		case actionTypes.STARTOVER:
 			return clearState(state, action);
-		// case actionTypes.SET_TOPICS_REQUIRED:
-		// 	return setTopicsRequired(state, action);
-		// case actionTypes.SET_TOPICS_OPTIONAL:
-		// 	return setTopicsOptional(state, action);
+		case actionTypes.SET_TOPICS_REQUIRED:
+			return setTopicsRequired(state, action);
+		case actionTypes.SET_TOPICS_OPTIONAL:
+			return setTopicsOptional(state, action);
 		default:
 			return state;
 	}

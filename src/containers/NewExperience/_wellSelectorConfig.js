@@ -1,13 +1,13 @@
-import { INPUT_TYPES, WELLS } from '../../_utils/constants';
+import { INPUT_TYPES, WELLBORES } from '../../_utils/constants';
 
 export const wellSelect = {
 	wells: {
 		elementConfig: {
-			label: 'Select well',
+			label: 'Select well bore',
 			hint: 'This is required.',
 			type: INPUT_TYPES.select,
 			value: '',
-			options: WELLS
+			options: WELLBORES
 		},
 		validation: {}
 	}

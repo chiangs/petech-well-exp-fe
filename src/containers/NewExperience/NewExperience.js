@@ -8,6 +8,7 @@ import {
 	setCurrTopic,
 	setDiscipline,
 	setWell,
+	setTopicsRequired,
 	clearState
 } from '../../store/newExperience/newExperience.actions';
 import * as selectors from '../../store/selectors';
@@ -19,6 +20,7 @@ import { newExpForm } from './_newExpFormConfig';
 import { topicSelectConfig } from './_topicSelectorConfig';
 import { wellSelect } from './_wellSelectorConfig';
 import { withRouter } from 'react-router-dom';
+import EquinorPointer from '../../components/EquinorPointer/EquinorPointer';
 
 // TODO: start over btn
 // TODO: handle well change
@@ -29,7 +31,6 @@ class NewExperience extends Component {
 		// * temporary to simulate request latency
 		// ! Update the baseUrl and timeout number before demo
 		// ! Need to memoize or store this request for nav back and forth
-
 		api.get('').then(res => {
 			setTimeout(() => {
 				this.setState({
@@ -41,14 +42,6 @@ class NewExperience extends Component {
 			}, 1000);
 		});
 	}
-
-	containsTag = (list, tags) => {
-		let containsTag = false;
-		tags.forEach((tag, i) => {
-			if (list.requiredBy[i].id === tag.id) containsTag = true;
-		});
-		return containsTag;
-	};
 
 	navTo(route) {
 		this.props.onClearState();
@@ -79,30 +72,18 @@ class NewExperience extends Component {
 			<InputGroup disabled />
 		);
 
-	createTopicSelect = topicsList => {
-		let topicArray = [];
-		if (this.props.well && topicsList) {
-			topicsList.forEach(topic => {
-				if (
-					topic.requiredBy.length === 0 ||
-					(topic.requiredBy.length > 0 &&
-						this.containsTag(topic, [this.props.discipline]))
-				) {
-					topicArray = topicArray.concat(topic);
+	createRequiredTopicsSelect = topicsList => {
+		return this.props.well && topicsList ? (
+			<InputGroup
+				configuration={
+					topicSelectConfig(topicsList).topics.elementConfig
 				}
-			});
-			return (
-				<InputGroup
-					configuration={
-						topicSelectConfig(topicArray).topics.elementConfig
-					}
-					validation={topicSelectConfig(topicArray).topics.validation}
-					changed={this.topicsSelectHandler}
-				/>
-			);
-		} else {
-			return <InputGroup disabled />;
-		}
+				validation={topicSelectConfig(topicsList).topics.validation}
+				changed={this.topicsSelectHandler}
+			/>
+		) : (
+			<InputGroup disabled />
+		);
 	};
 
 	createForm = formConfig => {
@@ -119,12 +100,14 @@ class NewExperience extends Component {
 			/>
 		) : null;
 
-	wellSelectHandler = event => this.props.onSetWell(event);
+	// * Form select event handlers
 	disciplineSelectHandler = event => this.props.onSetDiscipline(event);
+	wellSelectHandler = event =>
+		this.props.onSetWell(event, this.props.discipline);
 	topicsSelectHandler = event => this.props.onSetCurrTopic(event);
 
 	render() {
-		const formTitle = 'Create new experience';
+		const formTitle = 'Add experiences';
 		const subtitle =
 			'You will have a chance to review all fields before final submission for review.';
 
@@ -152,7 +135,9 @@ class NewExperience extends Component {
 			route: '/'
 		});
 		const wellSelect = this.createWellSelect(this.state.wellsList);
-		const topicSelect = this.createTopicSelect(this.state.topicsList);
+		const topicSelect = this.createRequiredTopicsSelect(
+			this.props.topicsSortedMerged
+		);
 		const formFilterSection = this.props.discipline ? (
 			<section className={css.NewExperience__Filters}>
 				{wellSelect}
@@ -164,6 +149,7 @@ class NewExperience extends Component {
 		return (
 			<article className={css.NewExperience}>
 				<section className={css.NewExperience__Title}>
+					<EquinorPointer />
 					<h1>{formTitle}</h1>
 				</section>
 				<section className={css.NewExperience__Subtitle}>
@@ -185,11 +171,13 @@ class NewExperience extends Component {
 const mapStateToProps = state => ({
 	well: selectors.getWell(state),
 	discipline: selectors.getDiscipline(state),
-	currTopic: selectors.getCurrTopic(state)
+	currTopic: selectors.getCurrTopic(state),
+	topicsRequired: selectors.getTopicsRequired(state),
+	topicsSortedMerged: selectors.getSortedMergedTopics(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-	onSetWell: well => dispatch(setWell(well)),
+	onSetWell: (well, discipline) => dispatch(setWell(well, discipline)),
 	onSetDiscipline: discipline => dispatch(setDiscipline(discipline)),
 	onSetCurrTopic: topic => dispatch(setCurrTopic(topic)),
 	onClearState: () => dispatch(clearState())

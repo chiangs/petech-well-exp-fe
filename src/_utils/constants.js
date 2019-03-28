@@ -22,21 +22,23 @@ export const DISCIPLINES = [
 	{ id: 7, displayValue: 'Well Leader' }
 ];
 
-export const WELLS = [
+// TODO: Structure them under common wells
+export const WELLBORES = [
 	{ id: 0, displayValue: 'None selected' },
-	{ id: 1, displayValue: 'WellName1' },
-	{ id: 2, displayValue: 'WellName2' },
-	{ id: 3, displayValue: 'WellName3' },
-	{ id: 4, displayValue: 'WellName4' },
-	{ id: 5, displayValue: 'WellName5' },
-	{ id: 6, displayValue: 'WellName6' },
-	{ id: 7, displayValue: 'WellName7' },
-	{ id: 8, displayValue: 'WellName8' },
-	{ id: 9, displayValue: 'WellName9' },
-	{ id: 10, displayValue: 'WellName10' },
-	{ id: 11, displayValue: 'WellName11' }
+	{ id: 1, displayValue: 'Well bore name 1' },
+	{ id: 2, displayValue: 'Well bore name 2' },
+	{ id: 3, displayValue: 'Well bore name 3' },
+	{ id: 4, displayValue: 'Well bore name 4' },
+	{ id: 5, displayValue: 'Well bore name 5' },
+	{ id: 6, displayValue: 'Well bore name 6' },
+	{ id: 7, displayValue: 'Well bore name 7' },
+	{ id: 8, displayValue: 'Well bore name 8' },
+	{ id: 9, displayValue: 'Well bore name 9' },
+	{ id: 10, displayValue: 'Well bore name 10' },
+	{ id: 11, displayValue: 'Well bore name 11' }
 ];
 
+// * List of all topics and their settings, ie who is required.
 export const TOPICS = [
 	{ id: 0, displayValue: 'None selected', requiredBy: [] },
 	{
