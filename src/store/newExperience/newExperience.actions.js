@@ -4,45 +4,78 @@ import { TOPICS } from '../../_utils/constants';
 export const setWell = (well, discipline) => {
 	return dispatch => {
 		// const reqTopicsList = createTopicArray(TOPICS, discipline);
-		sortTopics(TOPICS, discipline);
-		// const optionalTopicsList =
 		// dispatch(setTopicsRequired(reqTopicsList));
 		// dispatch(setTopicsOptions(optionalTopicsList));
+		const sortedTopics = sortTopics(TOPICS, discipline);
+		dispatch(setSortedTopics(sortedTopics));
 		dispatch(selectedWell(well));
 	};
 };
 
 const sortTopics = (topics, discipline) => {
-	console.log(topics);
 	const topicsCopy = [...topics];
-	let sortedTopics = topicsCopy[0];
+	let sortedTopics = [topicsCopy[0]];
 	const remainderTopics = topicsCopy.slice(1);
-	sortedTopics = sortedTopics
-		.concat
-		// sortRemainderArray(remainderTopics, discipline)
-		();
-	console.log(sortedTopics);
-	// * Sort topics[1] through topics[topics].length
-	// * by matching on discipline.id
-	// * append that to sortedTopics
+	const checkedTopics = checkRequired(remainderTopics, discipline);
+	const sortedRemainderTopics = sortTopicsByRequired(checkedTopics);
+	return sortedTopics.concat(sortedRemainderTopics);
 };
 
-// * Evalutates if topic requires discipline
-// const checkTopicRequiresDiscipline = (list, discipline) => {
-// 	list.forEach(topic => {
-// 		if (topic.requiredBy.contains(discipline)) {
-// 			return true;
-// 		} else {
-// 			return false;
-// 		}
-// 	});
-// };
+const sortTopicsByRequired = topics =>
+	topics.sort((a, b) => a.required < b.required);
 
-// const sortRemainderArray = (list, discipline) => {
-// 	list.sort((a, b) => {
-// 		if ()
-// 	}
-// }
+// * for each topic in array, if containsDiscipline, add a property as required
+const checkRequired = (topics, discipline) => {
+	return topics.map(topic => {
+		return {
+			...topic,
+			required: containsDiscipline(topic, discipline)
+		};
+	});
+};
+
+// * returns boolean based on if topic.requiredBy includes discipline.id
+const containsDiscipline = (topic, discipline) => {
+	let containsDisciplineId = false;
+	topic.requiredBy.forEach(item => {
+		if (item.id === discipline.id) {
+			containsDisciplineId = true;
+		}
+	});
+	return containsDisciplineId;
+};
+
+const selectedWell = well => {
+	return {
+		type: actionTypes.SET_WELL,
+		well: well
+	};
+};
+
+const setSortedTopics = topics => {
+	return {
+		type: actionTypes.SET_TOPICS,
+		topics: topics
+	};
+};
+
+export const setDiscipline = discipline => {
+	return {
+		type: actionTypes.SET_DISCIPLINE,
+		discipline: discipline
+	};
+};
+
+export const setCurrTopic = topic => {
+	return {
+		type: actionTypes.SET_CURR_TOPIC,
+		currTopic: topic
+	};
+};
+
+export const clearState = () => ({
+	type: actionTypes.STARTOVER
+});
 
 // ! Uncomment to bring back separated req and optional topics
 // const matchDiscipline = (list, disciplines) => {
@@ -73,37 +106,12 @@ const sortTopics = (topics, discipline) => {
 // 	return topicArray;
 // };
 
-const selectedWell = well => {
-	return {
-		type: actionTypes.SET_WELL,
-		well: well
-	};
-};
-
-export const setDiscipline = discipline => {
-	return {
-		type: actionTypes.SET_DISCIPLINE,
-		discipline: discipline
-	};
-};
-
-export const setCurrTopic = topic => {
-	return {
-		type: actionTypes.SET_CURR_TOPIC,
-		currTopic: topic
-	};
-};
-
-export const clearState = () => ({
-	type: actionTypes.STARTOVER
-});
-
-export const setTopicsRequired = topics => {
-	return {
-		type: actionTypes.SET_TOPICS_REQUIRED,
-		topicsRequired: topics
-	};
-};
+// export const setTopicsRequired = topics => {
+// 	return {
+// 		type: actionTypes.SET_TOPICS_REQUIRED,
+// 		topicsRequired: topics
+// 	};
+// };
 
 // export const setTopicsOptional = topics => {
 // 	return {

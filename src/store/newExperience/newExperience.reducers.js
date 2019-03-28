@@ -5,8 +5,9 @@ const initialState = {
 	well: null,
 	discipline: null,
 	currTopic: null,
-	topicsRequired: [],
-	topicsOptional: []
+	topics: []
+	// topicsRequired: [],
+	// topicsOptional: []
 };
 
 const clearState = (state, action) => {
@@ -31,11 +32,15 @@ const setCurrTopic = (state, action) => {
 		: state;
 };
 
-const setTopicsRequired = (state, action) =>
-	updateStateObj(state, { topicsRequired: action.topicsRequired });
+const setTopics = (state, action) => {
+	return updateStateObj(state, { topics: action.topics });
+};
 
-const setTopicsOptional = (state, action) =>
-	updateStateObj(state, { topicsOptional: action.topicsOptional });
+// const setTopicsRequired = (state, action) =>
+// 	updateStateObj(state, { topicsRequired: action.topicsRequired });
+
+// const setTopicsOptional = (state, action) =>
+// 	updateStateObj(state, { topicsOptional: action.topicsOptional });
 
 const newExperience = (state = initialState, action) => {
 	switch (action.type) {
@@ -47,10 +52,12 @@ const newExperience = (state = initialState, action) => {
 			return setCurrTopic(state, action);
 		case actionTypes.STARTOVER:
 			return clearState(state, action);
-		case actionTypes.SET_TOPICS_REQUIRED:
-			return setTopicsRequired(state, action);
-		case actionTypes.SET_TOPICS_OPTIONAL:
-			return setTopicsOptional(state, action);
+		case actionTypes.SET_TOPICS:
+			return setTopics(state, action);
+		// case actionTypes.SET_TOPICS_REQUIRED:
+		// 	return setTopicsRequired(state, action);
+		// case actionTypes.SET_TOPICS_OPTIONAL:
+		// 	return setTopicsOptional(state, action);
 		default:
 			return state;
 	}

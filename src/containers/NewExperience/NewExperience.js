@@ -8,7 +8,6 @@ import {
 	setCurrTopic,
 	setDiscipline,
 	setWell,
-	setTopicsRequired,
 	clearState
 } from '../../store/newExperience/newExperience.actions';
 import * as selectors from '../../store/selectors';
@@ -135,9 +134,7 @@ class NewExperience extends Component {
 			route: '/'
 		});
 		const wellSelect = this.createWellSelect(this.state.wellsList);
-		const topicSelect = this.createRequiredTopicsSelect(
-			this.props.topicsSortedMerged
-		);
+		const topicSelect = this.createRequiredTopicsSelect(this.props.topics);
 		const formFilterSection = this.props.discipline ? (
 			<section className={css.NewExperience__Filters}>
 				{wellSelect}
@@ -172,8 +169,7 @@ const mapStateToProps = state => ({
 	well: selectors.getWell(state),
 	discipline: selectors.getDiscipline(state),
 	currTopic: selectors.getCurrTopic(state),
-	topicsRequired: selectors.getTopicsRequired(state),
-	topicsSortedMerged: selectors.getSortedMergedTopics(state)
+	topics: selectors.getTopics(state)
 });
 
 const mapDispatchToProps = dispatch => ({
