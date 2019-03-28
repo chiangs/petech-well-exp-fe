@@ -10,6 +10,7 @@ const InputGroup = props => {
 	const inputElementClasses = [css.InputGroup__InputElement];
 	const disabledLabelClasses = labelClasses.concat(css.Disabled);
 	const disabledInputClasses = inputElementClasses.concat(css.Disabled);
+
 	let inputGroup = (
 		<div className={css.InputGroup}>
 			<label className={css.InputGroup__LabelGroup}>
@@ -98,20 +99,31 @@ const InputGroup = props => {
 			/>
 		);
 
-		const selectOption = props => (
-			<select
-				className={inputElementClasses.join(' ')}
-				value={value}
-				onChange={inputChangeHandler}
-				id={props.id}
-				name={props.name}>
-				{props.configuration.options.map(option => (
-					<option key={option.id} value={option.id}>
-						{option.displayValue}
-					</option>
-				))}
-			</select>
-		);
+		const selectOption = props => {
+			return (
+				<select
+					className={inputElementClasses.join(' ')}
+					value={value}
+					onChange={inputChangeHandler}
+					id={props.id}
+					name={props.name}>
+					{props.configuration.options.map(option => {
+						const optionClass = [css.Select__Option];
+						const optionClasses = option.required
+							? optionClass.concat(css.Required)
+							: optionClass;
+						return (
+							<option
+								key={option.id}
+								value={option.id}
+								className={optionClasses.join(' ')}>
+								{option.displayValue}
+							</option>
+						);
+					})}
+				</select>
+			);
+		};
 
 		let inputElement;
 		if (label) {

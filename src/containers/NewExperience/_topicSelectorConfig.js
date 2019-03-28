@@ -8,7 +8,8 @@ export const topicSelectConfig = topics => ({
 	topics: {
 		elementConfig: {
 			label: 'Select topic',
-			hint: 'These are required for selected discipline.',
+			hint:
+				'Bold-italic denotes required topics for selected discipline.',
 			type: INPUT_TYPES.select,
 			value: '',
 			options: [...topics]

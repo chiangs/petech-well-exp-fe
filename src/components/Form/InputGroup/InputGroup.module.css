@@ -59,3 +59,11 @@
 .InputGroup__Optional {
 	font-family: var(--font-main);
 }
+
+.Select__Option {
+}
+
+.Select__Option.Required {
+	font-weight: bold;
+	font-style: italic;
+}
