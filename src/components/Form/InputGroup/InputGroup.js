@@ -30,7 +30,7 @@ const InputGroup = props => {
 		const initialValue =
 			props.configuration.type === INPUT_TYPES.select
 				? props.configuration.options[0].id
-				: props.configuration.id;
+				: props.configuration.value;
 
 		const [value, newValue] = useState(initialValue);
 
@@ -96,7 +96,7 @@ const InputGroup = props => {
 			<textarea
 				className={inputElementClasses.join(' ')}
 				{...props.configuration}
-				value={value}
+				value={props.configuration.value}
 				onChange={inputChangeHandler}
 				id={props.id}
 				name={props.id}

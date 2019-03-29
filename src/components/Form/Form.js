@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './Form.module.css';
 import InputGroup from './InputGroup/InputGroup';
+import Button from '../Button/Button';
 
 // TODO: add changed prop to InputGroups and handle it
 // * Reusable form that takes in a configuration JS object.
@@ -15,6 +16,14 @@ const Form = props => {
 			validation: props.formConfig[key].validation
 		});
 	}
+	const copyBtn =
+		props.copyBtn && props.copyBtnConfig ? (
+			<Button
+				className={css.Observations__CopyBtnSection__Button}
+				button={props.copyBtnConfig}
+				btnClick={props.copyExternal}
+			/>
+		) : null;
 
 	// * create list of buttons to render
 	return (
@@ -31,6 +40,10 @@ const Form = props => {
 						/>
 					);
 				})}
+				<section className={css.Observations__CopyBtnSection}>
+					{copyBtn}
+				</section>
+				<section className={css.Observations__Placeholder} />
 			</section>
 			<section className={css.Form__FormControls__SupportingDocs}>
 				{formElements
@@ -44,7 +57,6 @@ const Form = props => {
 					))}
 			</section>
 			<section className={css.Form__ActionButtons}>
-				{/* Copy internal to shared */}
 				{/* Save state */}
 				{/* Cancel */}
 				{/* Submit Exp */}

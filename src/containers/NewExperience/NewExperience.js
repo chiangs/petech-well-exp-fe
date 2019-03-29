@@ -25,7 +25,19 @@ import EquinorPointer from '../../components/EquinorPointer/EquinorPointer';
 // TODO: handle well change
 // TODO: handle topic change
 class NewExperience extends Component {
-	state = {};
+	state = {
+		externalAvailable: null,
+		internalOnly: null,
+		buttons: {
+			copyBtnConfig: {
+				label: 'Copy text to internal',
+				type: 'default',
+				icon: 'paste',
+				iconType: 'solid',
+				iconColor: 'var(--black)'
+			}
+		}
+	};
 	componentDidMount() {
 		// * temporary to simulate request latency
 		// ! Update the baseUrl and timeout number before demo
@@ -87,10 +99,22 @@ class NewExperience extends Component {
 			<InputGroup disabled />
 		);
 
-	createForm = formConfig =>
-		formConfig && this.props.currTopic ? (
-			<Form formConfig={formConfig} changed={this.formChangeHandler} />
+	createForm = config => {
+		let formConfig = { ...config };
+		if (this.state.externalAvailable !== null) {
+			formConfig.externalAvailable.elementConfig.value = this.state.externalAvailable;
+			formConfig.internalOnly.elementConfig.value = this.state.internalOnly;
+		}
+		return formConfig && this.props.currTopic ? (
+			<Form
+				formConfig={formConfig}
+				changed={this.formChangeHandler}
+				copyBtn
+				copyBtnConfig={this.state.buttons.copyBtnConfig}
+				copyExternal={this.copyExternalHandler}
+			/>
 		) : null;
+	};
 
 	createStartOverButton = btnConfig =>
 		this.props.discipline ? (
@@ -100,14 +124,15 @@ class NewExperience extends Component {
 			/>
 		) : null;
 
-	// * Form select event handlers
+	// * Form select event handlers, observations are saved locally until submit/save
 	disciplineSelectHandler = value => this.props.onSetDiscipline(value);
 	wellSelectHandler = value =>
 		this.props.onSetWell(value, this.props.discipline);
 	topicsSelectHandler = value => this.props.onSetCurrTopic(value);
-	// TODO: handle all form cases to save to component state, and wait for save to save to store
 	formChangeHandler = (value, elementId) =>
-		console.log({ [elementId]: value });
+		this.setState({ [elementId]: value });
+	copyExternalHandler = () =>
+		this.setState({ internalOnly: this.state.externalAvailable });
 
 	render() {
 		const formTitle = 'Add experiences';

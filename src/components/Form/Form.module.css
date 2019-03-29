@@ -17,6 +17,18 @@
 	flex-wrap: wrap;
 }
 
+.Observations__CopyBtnSection,
+.Observations__Placeholder {
+	max-width: 48%;
+	flex: 1 1 45%;
+	display: flex;
+	justify-content: flex-end;
+	margin: 0 var(--double);
+}
+
+.Observations__CopyBtnSection__Button {
+}
+
 .Form__FormControls__SupportingDocs {
 	display: flex;
 	flex-direction: row;

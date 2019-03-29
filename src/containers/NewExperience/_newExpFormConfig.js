@@ -1,6 +1,15 @@
 import { INPUT_TYPES } from '../../_utils/constants';
 
 export const newExpForm = {
+	externalAvailable: {
+		elementConfig: {
+			label: 'Experience observations',
+			hint: 'For external sharing.',
+			type: INPUT_TYPES.textarea,
+			value: ''
+		},
+		validation: {}
+	},
 	internalOnly: {
 		elementConfig: {
 			label: 'Experience observations',
@@ -13,15 +22,6 @@ export const newExpForm = {
 			valid: false,
 			minLength: 3
 		}
-	},
-	externalAvailable: {
-		elementConfig: {
-			label: 'Experience observations',
-			hint: 'For external sharing.',
-			type: INPUT_TYPES.textarea,
-			value: ''
-		},
-		validation: {}
 	},
 	link: {
 		elementConfig: {
