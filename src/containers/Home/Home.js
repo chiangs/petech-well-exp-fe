@@ -9,7 +9,7 @@ export default class Home extends Component {
 	}
 
 	render() {
-		const title = 'PETECH';
+		const title = 'JOHAN SVERDRUP';
 		const title2 = 'Well Experience';
 		const subtitle = 'Subtitle placeholder text.';
 		const buttonsPrompt = 'Start here.';
@@ -54,16 +54,18 @@ export default class Home extends Component {
 				</section>
 				<section className={css.Home__InfoSection}>
 					<h3>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Deserunt eius dignissimos veritatis voluptate, rem ipsum
-						id voluptas quaerat harum veniam omnis nostrum sequi
-						tempore iusto quod? Dolorem fuga tenetur architecto.
+						This is a mock-up to drive further discussion and
+						crystallization of the app flow data structure, and
+						specifically the MVP.
 					</h3>
 					<p>
-						Lorem ipsum, dolor sit amet consectetur adipisicing
-						elit. Earum et corporis eaque? Temporibus cumque facere
-						est, in quisquam ex iure tempore sunt, sed eum,
-						accusantium officiis blanditiis quae saepe autem.
+						Some form validations are not implemented (i.e.,
+						requiring at least one tag from Section, Formation, or
+						Operation). File upload will be implemented as a drag
+						and drop or click to select box from 3rd party library.
+						Some views are not implemented and will redirect to the
+						404 page. Also, the clearing or retaining of a view's
+						state is not fully implemented at this stage.
 					</p>
 					<span className={css.Home__Pointer}>
 						<EquinorPointer />

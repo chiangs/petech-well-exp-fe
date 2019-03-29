@@ -6,13 +6,13 @@ export default class Layout extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<header>
+				<header id="header">
 					<Navigation />
 				</header>
 				<main id="main" className={css.Content}>
 					{this.props.children}
 				</main>
-				<footer />
+				<footer id="footer" />
 			</React.Fragment>
 		);
 	}

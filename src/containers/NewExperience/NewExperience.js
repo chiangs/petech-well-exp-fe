@@ -113,6 +113,7 @@ class NewExperience extends Component {
 				copyBtn
 				copyBtnConfig={this.state.buttons.copyBtnConfig}
 				copyExternal={this.copyExternalHandler}
+				reviewHandler={this.reviewHandler}
 			/>
 		) : null;
 	};
@@ -134,6 +135,9 @@ class NewExperience extends Component {
 		this.setState({ [elementId]: value });
 	copyExternalHandler = () =>
 		this.setState({ internalOnly: this.state.externalAvailable });
+
+	// saveExperienceHandler;
+	reviewHandler = route => this.props.history.push(route);
 
 	render() {
 		const formTitle = 'Add experiences';
