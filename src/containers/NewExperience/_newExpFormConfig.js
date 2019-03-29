@@ -59,7 +59,7 @@ export const newExpForm = {
 	section: {
 		elementConfig: {
 			label: 'Section',
-			hint: 'Section of the well bore this experience relates to.',
+			hint: 'Single or multiselect?',
 			type: INPUT_TYPES.select,
 			value: '',
 			options: [
@@ -74,7 +74,7 @@ export const newExpForm = {
 	formation: {
 		elementConfig: {
 			label: 'Formation',
-			hint: 'Formation this experience relates to.',
+			hint: 'Single or multiselect?',
 			type: INPUT_TYPES.select,
 			value: '',
 			options: [
@@ -89,7 +89,7 @@ export const newExpForm = {
 	operation: {
 		elementConfig: {
 			label: 'Operation',
-			hint: 'Operation this experience relates to.',
+			hint: 'Single or multiselect?',
 			type: INPUT_TYPES.select,
 			value: '',
 			options: [
