@@ -9,6 +9,7 @@ const Form = props => {
 	// * create list of form elements
 	const formElements = [];
 	const observations = 2;
+
 	for (const key in props.formConfig) {
 		formElements.push({
 			id: key,
@@ -51,8 +52,10 @@ const Form = props => {
 					.map(element => (
 						<InputGroup
 							key={element.id}
+							id={element.id}
 							configuration={element.config}
 							validation={element.validation}
+							changed={props.changed}
 						/>
 					))}
 			</section>

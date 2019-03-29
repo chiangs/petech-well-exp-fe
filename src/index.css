@@ -228,7 +228,14 @@ select,
 button {
 	color: inherit;
 	font: var(--font-heading);
-	border: 1px solid var(--grey);
+}
+
+input,
+textarea,
+select {
+	box-shadow: inset 2px 2px 2px 0px #dddddd;
+	border-radius: var(--border-radius);
+	min-height: 43px;
 }
 
 textarea {

@@ -3,7 +3,7 @@ import { INPUT_TYPES } from '../../_utils/constants';
 export const newExpForm = {
 	externalAvailable: {
 		elementConfig: {
-			label: 'Experience observations',
+			label: 'Experience observations (ext)',
 			hint: 'For external sharing.',
 			type: INPUT_TYPES.textarea,
 			value: ''
@@ -12,7 +12,7 @@ export const newExpForm = {
 	},
 	internalOnly: {
 		elementConfig: {
-			label: 'Experience observations',
+			label: 'Experience observations (int)',
 			hint: 'For internal use only.',
 			type: INPUT_TYPES.textarea,
 			value: ''
@@ -35,7 +35,8 @@ export const newExpForm = {
 	figure: {
 		elementConfig: {
 			label: 'Figure',
-			hint: 'Upload a figure from your computer',
+			hint:
+				'Not working, will implement drag/drop and click to upload library',
 			type: INPUT_TYPES.file,
 			value: ''
 		},
@@ -48,8 +49,9 @@ export const newExpForm = {
 			type: INPUT_TYPES.select,
 			value: '',
 			options: [
-				{ value: 1, displayValue: 'Positive' },
-				{ value: 0, displayValue: 'Negative' }
+				{ id: 0, displayValue: 'Neutral' },
+				{ id: 1, displayValue: 'Positive' },
+				{ id: 2, displayValue: 'Negative' }
 			]
 		},
 		validation: {}

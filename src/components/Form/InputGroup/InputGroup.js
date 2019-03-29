@@ -52,6 +52,10 @@ const InputGroup = props => {
 			}
 		};
 
+		const fileInputChange = () => {
+			const fileName = props.fileInput.current.files[0].name;
+		};
+
 		// * Define the label
 		const label =
 			props.configuration.label.length > 0 ? (
@@ -85,7 +89,7 @@ const InputGroup = props => {
 			<input
 				className={inputElementClasses.join(' ')}
 				{...props.configuration}
-				value={props.configuration.value}
+				value={value}
 				onChange={inputChangeHandler}
 				id={props.id}
 				name={props.id}
@@ -128,11 +132,22 @@ const InputGroup = props => {
 			</select>
 		);
 
+		const fileUploader = props => (
+			<input
+				type="file"
+				className={inputElementClasses.join(' ')}
+				{...props.configuration}
+				id={props.id}
+				name={props.id}
+				disabled
+			/>
+		);
+
 		let inputElement;
 		if (label) {
 			// * Create the input element type based on props
 			switch (props.configuration.type) {
-				case INPUT_TYPES.default:
+				case INPUT_TYPES.default || INPUT_TYPES.url:
 					inputElement = inputElementDefault;
 					break;
 				case INPUT_TYPES.textarea:
@@ -140,6 +155,9 @@ const InputGroup = props => {
 					break;
 				case INPUT_TYPES.select:
 					inputElement = selectOption(props);
+					break;
+				case INPUT_TYPES.file:
+					inputElement = fileUploader(props);
 					break;
 				default:
 					inputElement = inputElementDefault;

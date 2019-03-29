@@ -38,6 +38,7 @@ class NewExperience extends Component {
 			}
 		}
 	};
+
 	componentDidMount() {
 		// * temporary to simulate request latency
 		// ! Update the baseUrl and timeout number before demo
