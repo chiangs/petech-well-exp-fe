@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import 'normalize.css';
 import './index.css';
 import 'boxicons';
-import App from './containers/App/App';
+import App from './modules/App';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import * as serviceWorker from './serviceWorker';
