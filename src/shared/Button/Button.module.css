@@ -19,6 +19,16 @@
 	background-color: var(--equinor-main-hover);
 }
 
+.Alternate {
+	border: 1px solid var(--equinor-supporting-blue);
+	background-color: none;
+	color: var(--equinor-supporting-blue);
+}
+
+.Alternate:hover {
+	background-color: var(--equinor-supporting-blue-light);
+}
+
 .Submit {
 	border: 1px solid var(--equinor-supporting-green);
 	background-color: var(--equinor-supporting-green);
@@ -30,13 +40,13 @@
 }
 
 .Cancel {
-	border: 1px solid var(--equinor-supporting-blue);
-	background-color: var(--equinor-supporting-blue);
-	color: var(--equinor-supporting-blue-light);
+	border: 1px solid var(--grey-dark);
+	background-color: none;
+	color: var(--grey-dark);
 }
 
 .Cancel:hover {
-	background-color: var(--equinor-supporting-blue-hover);
+	background-color: var(--grey);
 }
 
 .Warning {

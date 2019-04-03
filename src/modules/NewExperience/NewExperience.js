@@ -164,7 +164,7 @@ class NewExperience extends Component {
 			label: 'Start over',
 			type: 'cancel',
 			icon: 'revision',
-			iconColor: 'var(--equinor-supporting-blue-light)',
+			iconColor: 'var(--grey-dark)',
 			route: '/'
 		});
 		const wellSelect = this.createWellSelect(this.state.wellsList);
