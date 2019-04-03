@@ -20,6 +20,10 @@
 	margin: 0;
 }
 
+.Navigation__LogoSection img {
+	min-width: 89.4px;
+}
+
 .Navigation__NavigationItems {
 	flex: 3;
 	display: flex;

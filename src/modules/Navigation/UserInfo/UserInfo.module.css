@@ -4,9 +4,9 @@
 }
 
 .UserInfo__Icon {
-	padding: var(--single);
 }
 
 .UserInfo__NameDisplay {
-	font-size: var(--font-reg);
+	padding-top: var(--single);
+	margin-left: var(--single);
 }

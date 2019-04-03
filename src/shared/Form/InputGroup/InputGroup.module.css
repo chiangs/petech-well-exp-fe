@@ -3,7 +3,7 @@
 	min-height: var(--quad);
 	margin: var(--double);
 	max-width: 48%;
-	font-size: var(--font-form-input);
+	/* font-size: var(--font-form-input); */
 }
 
 .Disabled {

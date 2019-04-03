@@ -49,7 +49,7 @@ export default class Home extends Component {
 					<h2 className="italic">{subtitle}</h2>
 				</section>
 				<section className={css.Home__Buttons}>
-					<p>{buttonsPrompt}</p>
+					<p className="label bold">{buttonsPrompt}</p>
 					<ul>{buttonsList}</ul>
 				</section>
 				<section className={css.Home__InfoSection}>

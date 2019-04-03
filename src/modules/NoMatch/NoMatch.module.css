@@ -10,12 +10,10 @@
 
 .NoMatch__Title {
 	font-family: var(--font-bold);
-	font-size: var(--font-title);
 	margin: var(--title-space) var(--base);
 }
 
 .NoMatch__Subtitle {
-	font-size: var(--font-label);
 	margin: var(--title-space) var(--base);
 }
 
@@ -29,15 +27,13 @@
 }
 
 .NoMatch__Instructions p {
-	font-size: var(--font-form-input);
 	color: var(--pink);
 	margin: var(--base);
 }
 
 .NoMatch__Instructions a {
-	font-size: var(--font-form-input);
 	font-family: var(--font-bold);
-	color: var(--font-form-input);
+	color: var(--pink);
 }
 
 .NoMatch__Instructions a:hover {

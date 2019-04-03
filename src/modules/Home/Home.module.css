@@ -5,23 +5,18 @@
 	flex-direction: column;
 }
 
-.Home__Title h1 {
-}
-
 .Title__Part1 {
+	font-size: inherit;
 	letter-spacing: 0.05em;
 }
 
 .Title__Part2 {
+	font-size: inherit;
 	font-family: var(--font-bold);
 	font-weight: 900;
 }
 
 .Home__Subtitle {
-}
-
-.Home__Subtitle h2 {
-	font-size: var(--font-reg);
 }
 
 .Home__Pointer {
@@ -35,11 +30,6 @@
 .Home__Buttons {
 	padding: var(--title-space);
 	text-align: center;
-}
-
-.Home__Buttons p {
-	font-family: var(--font-bold);
-	font-size: var(--font-label);
 }
 
 .Home__Buttons ul {
@@ -59,7 +49,7 @@
 }
 
 .Home__InfoSection h3 {
-	font-size: var(--font-label);
+	/* font-size: var(--font-label); */
 	font-family: var(--font-bold);
 	color: var(--equinor-supporting-blue);
 }

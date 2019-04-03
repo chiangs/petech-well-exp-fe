@@ -13,7 +13,7 @@
 	align-items: center;
 	white-space: nowrap;
 	padding: 0 var(--triple);
-	font-size: var(--font-reg);
+	/* font-size: var(--font-reg); */
 }
 
 .NavigationItems__NavItem:hover {

@@ -33,24 +33,9 @@
 font-feature-settings: 'ss01'; */
 
 :root {
-	--font-main: 'Equinor-Main', sans-serif;
-	--font-main-italic: 'Equinor-Main-Italic', sans-serif;
-	--font-heading: 'Equinor-Heading', sans-serif;
-	--font-heading-italic: 'Equinor-Heading-Italic', sans-serif;
-	--font-bold: 'Equinor-Bold', sans-serif;
-	--font-bold-italic: 'Equinor-Bold-Italic', sans-serif;
-	--font-weight: 400;
-	--font-weight-heading: 500;
-	--font-weight-bold: 700;
-	--font-min: 16px;
-	--font-reg: 18px;
-	--font-form-input: 20px;
-	--font-label: 30px;
-	--font-title: 50px;
-	--letter-spacing: -0.25px;
-	--line-height: 1.3;
+	/* *Default dimensions */
+	--navigation-height-desktop: calc(var(--quad) * 4);
 	--border-radius: 3px;
-	--hover-lighten: 0.1;
 	/* *Spacing for lines, padding, margins */
 	--unit: 5;
 	--single: calc(var(--unit) * 1px);
@@ -60,6 +45,19 @@ font-feature-settings: 'ss01'; */
 	--base: calc(var(--unit) * 5px);
 	--title-space: calc(var(--unit) * 10px);
 	--default-page-padding: var(--double) var(--quad);
+	/* *Typography (see font sizing rules in media queries)*/
+	--font-main: 'Equinor-Main', sans-serif;
+	--font-main-italic: 'Equinor-Main-Italic', sans-serif;
+	--font-heading: 'Equinor-Heading', sans-serif;
+	--font-heading-italic: 'Equinor-Heading-Italic', sans-serif;
+	--font-bold: 'Equinor-Bold', sans-serif;
+	--font-bold-italic: 'Equinor-Bold-Italic', sans-serif;
+	--font-weight: 400;
+	--font-weight-heading: 500;
+	--font-weight-bold: 700;
+	--letter-spacing: -0.25px;
+	--line-height: 1.3;
+	--hover-lighten: 0.1;
 	/* *Color values are numbers only, this provides flexibility for opacity
 	* Fx: --equinor-main-faded: rgba(var(--equinor-main), .5)); */
 	--energy-red: 255, 18, 67;
@@ -87,8 +85,6 @@ font-feature-settings: 'ss01'; */
 	--equinor-supporting-green-hover: rgba(var(--moss-green-darken));
 	--equinor-supporting-green-light: rgba(var(--lichen-green));
 	--equinor-supporting-highlight: rgba(var(--spruce-wood));
-	/* *Default heights */
-	--navigation-height-desktop: calc(var(--quad) * 4);
 	--boxshadow: 0px 6px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -147,7 +143,6 @@ h5,
 h6 {
 	font-family: var(--font-heading);
 	font-weight: var(--font-weight-heading);
-	font-size: var(--font-title);
 	letter-spacing: var(--letter-spacing);
 	line-height: var(--line-height);
 }
@@ -179,7 +174,6 @@ h6 {
 p {
 	font-family: var(--font-main);
 	font-weight: var(--font-weight);
-	font-size: var(--font-reg);
 	line-height: var(--line-height);
 	letter-spacing: 0;
 	margin-bottom: var(--single);
@@ -210,7 +204,6 @@ a,
 a:visited {
 	font-family: var(--font-heading);
 	font-weight: var(--font-weight);
-	font-size: var(--font-min);
 	text-decoration: none;
 	color: var(--black);
 	padding: var(--double) 0px;
@@ -275,4 +268,48 @@ noscript {
 	display: block;
 	margin-bottom: 1em;
 	margin-top: 1em;
+}
+
+@media (min-width: 480px) {
+	/* 14px @ 480px increasing to 18px @ 1920px */
+	:root {
+		font-size: calc(0.875rem + ((1vw - 4.8px) * 0.2778));
+		/* Where: * 0.2778 = 100 * font_Size_Difference / viewport_Width_Difference */
+	}
+	/* 40px @ 480px increasing to 50px @ 1920px */
+	h1 {
+		font-size: calc(1.875rem + ((1vw - 4.8px) * 1.0417));
+	}
+	/* 20px @ 480px increasing to 30px @ 1920px */
+	h2 {
+		font-size: calc(1.25rem + ((1vw - 4.8px) * 0.6944));
+	}
+	/* 20px @ 480px increasing to 25px @ 1920px */
+	h3,
+	.label {
+		font-size: calc(1.25rem + ((1vw - 4.8px) * 0.3472));
+	}
+	/* 16px @ 480px increasing to 20px @ 1920px */
+	h4 {
+		font-size: calc(1rem + ((1vw - 4.8px) * 0.2778));
+	}
+}
+/* Prevent font scaling beyond this breakpoint */
+@media (min-width: 1920px) {
+	:root {
+		font-size: 18px;
+	}
+	h1 {
+		font-size: 45px;
+	}
+	h2 {
+		font-size: 30px;
+	}
+	h3,
+	.label {
+		font-size: 25px;
+	}
+	h4 {
+		font-size: 20px;
+	}
 }

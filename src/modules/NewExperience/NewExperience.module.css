@@ -16,11 +16,11 @@
 }
 
 .NewExperience__Subtitle * {
-	font-size: var(--font-reg);
+	/* font-size: var(--font-reg); */
 }
 
 .SelectedDiscipline {
-	font-size: var(--font-label);
+	/* font-size: var(--font-label); */
 }
 
 .SelectedDiscipline__Label {
