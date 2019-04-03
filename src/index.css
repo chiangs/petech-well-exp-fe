@@ -1,31 +1,37 @@
 /* global styles */
 @font-face {
 	font-family: 'Equinor-Main';
+	font-display: swap;
 	src: url(./_assets/fonts/Equinor-Regular.woff2) format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
 	font-family: 'Equinor-Main-Italic';
+	font-display: swap;
 	src: url(./_assets/fonts/Equinor-Italic.woff2) format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
 	font-family: 'Equinor-Heading';
+	font-display: swap;
 	src: url(./_assets/fonts/Equinor-Medium.woff2) format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
 	font-family: 'Equinor-Heading-Italic';
+	font-display: swap;
 	src: url(./_assets/fonts/Equinor-MediumItalic.woff2) format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
 	font-family: 'Equinor-Bold';
+	font-display: swap;
 	src: url(./_assets/fonts/Equinor-Bold.woff2) format('woff2'); /* Modern Browsers */
 }
 
 @font-face {
 	font-family: 'Equinor-Bold-Italic';
+	font-display: swap;
 	src: url(./_assets/fonts/Equinor-BoldItalic.woff2) format('woff2'); /* Modern Browsers */
 }
 /* Add the following to get alternate character styles */
