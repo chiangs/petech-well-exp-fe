@@ -32,12 +32,31 @@
 	color: var(--equinor-supporting-green);
 }
 
+.NewExperience__SelectDiscipline {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .NewExperience__Filters {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: var(--double);
+}
+
+.NewExperience__OtherEntries {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--grey);
+	border-radius: var(--border-radius);
+	color: var(--grey-dark);
+	font-family: var(--font-heading-italic);
+	padding: var(--base);
+	margin: var(--double) 0;
 }
 
 .NewExperience__FormSection {

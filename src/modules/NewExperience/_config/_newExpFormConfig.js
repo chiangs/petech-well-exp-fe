@@ -35,9 +35,17 @@ export const newExpForm = {
 	figure: {
 		elementConfig: {
 			label: 'Figure',
-			hint:
-				'Not working, will implement drag/drop and click to upload library',
+			hint: 'Implement drag/drop and click to upload library',
 			type: INPUT_TYPES.file,
+			value: ''
+		},
+		validation: {}
+	},
+	references: {
+		elementConfig: {
+			label: 'References',
+			hint: 'Add references here / will have add button',
+			type: INPUT_TYPES.text,
 			value: ''
 		},
 		validation: {}
@@ -52,51 +60,6 @@ export const newExpForm = {
 				{ id: 0, displayValue: 'Neutral' },
 				{ id: 1, displayValue: 'Positive' },
 				{ id: 2, displayValue: 'Negative' }
-			]
-		},
-		validation: {}
-	},
-	section: {
-		elementConfig: {
-			label: 'Section',
-			hint: 'Single or multiselect?',
-			type: INPUT_TYPES.select,
-			value: '',
-			options: [
-				{ id: 0, displayValue: 'None selected' },
-				{ id: 1, displayValue: 'Section 1' },
-				{ id: 2, displayValue: 'Section 2' },
-				{ id: 3, displayValue: 'Section 3' }
-			]
-		},
-		validation: {}
-	},
-	formation: {
-		elementConfig: {
-			label: 'Formation',
-			hint: 'Single or multiselect?',
-			type: INPUT_TYPES.select,
-			value: '',
-			options: [
-				{ id: 0, displayValue: 'None selected' },
-				{ id: 1, displayValue: 'Formation 1' },
-				{ id: 2, displayValue: 'Formation 2' },
-				{ id: 3, displayValue: 'Formation 3' }
-			]
-		},
-		validation: {}
-	},
-	operation: {
-		elementConfig: {
-			label: 'Operation',
-			hint: 'Single or multiselect?',
-			type: INPUT_TYPES.select,
-			value: '',
-			options: [
-				{ id: 0, displayValue: 'None selected' },
-				{ id: 1, displayValue: 'Operation 1' },
-				{ id: 2, displayValue: 'Operation 2' },
-				{ id: 3, displayValue: 'Operation 3' }
 			]
 		},
 		validation: {}

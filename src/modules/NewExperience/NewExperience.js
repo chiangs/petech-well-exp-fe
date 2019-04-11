@@ -20,15 +20,25 @@ import { disciplineSelect } from './_config/_disciplineSelectorConfig';
 import { newExpForm } from './_config/_newExpFormConfig';
 import { topicSelectConfig } from './_config/_topicSelectorConfig';
 import { wellSelect } from './_config/_wellSelectorConfig';
+import { newExpFilter } from './_config/_filterConfig';
 
-// TODO: start over btn
-// TODO: handle well change
-// TODO: handle topic change
 class NewExperience extends Component {
 	state = {
+		formTitle: 'Add experiences',
+		subtitle:
+			'You will have a chance to review all fields before final submission for review.',
 		externalAvailable: null,
 		internalOnly: null,
+		filterInstructions:
+			'Must select at least one Section, Formation, Operation, or Depth',
 		buttons: {
+			startOverBtn: {
+				label: 'Start over',
+				type: 'cancel',
+				icon: 'revision',
+				iconColor: 'var(--grey-dark)',
+				route: '/'
+			},
 			copyBtnConfig: {
 				label: 'Copy text to internal',
 				type: 'default',
@@ -48,6 +58,7 @@ class NewExperience extends Component {
 				this.setState({
 					wellsList: { ...wellSelect },
 					disciplinesList: { ...disciplineSelect },
+					filtersList: { ...newExpFilter },
 					topicsList: [...TOPICS],
 					formConfig: { ...newExpForm }
 				});
@@ -60,10 +71,18 @@ class NewExperience extends Component {
 		this.props.history.push(route);
 	}
 
+	// * NOTES:
+	/**
+	 * 1. Create selectors Discipline, Wellbore, Topic
+	 * 2. Create filters Section, Formation, Operation, Depth
+	 * 3. Retrieve and memoize matching entries
+	 * 4. Create form
+	 */
+	// * Create Selects
 	createDisciplineSelect = (disciplinesList, wellsList, topicsList) =>
 		disciplinesList && wellsList && topicsList ? (
 			<InputGroup
-				id="disciplineSelect"
+				id='disciplineSelect'
 				configuration={
 					this.state.disciplinesList.disciplines.elementConfig
 				}
@@ -77,7 +96,7 @@ class NewExperience extends Component {
 	createWellSelect = wellsList =>
 		wellsList && this.props.discipline ? (
 			<InputGroup
-				id="wellBoreSelect"
+				id='wellBoreSelect'
 				configuration={this.state.wellsList.wells.elementConfig}
 				validation={this.state.wellsList.wells.validation}
 				changed={this.wellSelectHandler}
@@ -89,7 +108,7 @@ class NewExperience extends Component {
 	createTopicsSelect = topicsList =>
 		this.props.well && topicsList ? (
 			<InputGroup
-				id="topicsSelect"
+				id='topicsSelect'
 				configuration={
 					topicSelectConfig(topicsList).topics.elementConfig
 				}
@@ -100,6 +119,64 @@ class NewExperience extends Component {
 			<InputGroup disabled />
 		);
 
+	createStartOverButton = btnConfig =>
+		this.props.discipline ? (
+			<Button
+				button={btnConfig}
+				btnClick={() => this.navTo(btnConfig.route)}
+			/>
+		) : null;
+
+	// * Create Filters
+	createSectionFilter = () =>
+		this.props.well && this.props.currTopic ? (
+			<InputGroup
+				id='sectionsFilter'
+				configuration={this.state.filtersList.section.elementConfig}
+				validation={this.state.filtersList.section.validation}
+				// changed={this.topicsSelectHandler}
+			/>
+		) : (
+			<InputGroup disabled />
+		);
+
+	createFormationFilter = () =>
+		this.props.well && this.props.currTopic ? (
+			<InputGroup
+				id='sectionsFilter'
+				configuration={this.state.filtersList.formation.elementConfig}
+				validation={this.state.filtersList.formation.validation}
+				// changed={this.topicsSelectHandler}
+			/>
+		) : (
+			<InputGroup disabled />
+		);
+
+	createOperationFilter = () =>
+		this.props.well && this.props.currTopic ? (
+			<InputGroup
+				id='sectionsFilter'
+				configuration={this.state.filtersList.operation.elementConfig}
+				validation={this.state.filtersList.operation.validation}
+				// changed={this.topicsSelectHandler}
+			/>
+		) : (
+			<InputGroup disabled />
+		);
+
+	createDepthFilter = () =>
+		this.props.well && this.props.currTopic ? (
+			<InputGroup
+				id='sectionsFilter'
+				configuration={this.state.filtersList.depth.elementConfig}
+				validation={this.state.filtersList.depth.validation}
+				// changed={this.topicsSelectHandler}
+			/>
+		) : (
+			<InputGroup disabled />
+		);
+
+	// * Create Form
 	createForm = config => {
 		let formConfig = { ...config };
 		if (this.state.externalAvailable !== null) {
@@ -118,32 +195,26 @@ class NewExperience extends Component {
 		) : null;
 	};
 
-	createStartOverButton = btnConfig =>
-		this.props.discipline ? (
-			<Button
-				button={btnConfig}
-				btnClick={() => this.navTo(btnConfig.route)}
-			/>
-		) : null;
-
 	// * Form select event handlers, observations are saved locally until submit/save
+	// * Select handlers
 	disciplineSelectHandler = value => this.props.onSetDiscipline(value);
 	wellSelectHandler = value =>
 		this.props.onSetWell(value, this.props.discipline);
 	topicsSelectHandler = value => this.props.onSetCurrTopic(value);
+	// TODO: Filter handlers
+	// sectionFilterHandler
+	// formationFilterHandler
+	// operatoinFilterHandler
+	// depthFilterHandler
+	// * Form related handlers
 	formChangeHandler = (value, elementId) =>
 		this.setState({ [elementId]: value });
 	copyExternalHandler = () =>
 		this.setState({ internalOnly: this.state.externalAvailable });
-
 	// saveExperienceHandler;
 	reviewHandler = route => this.props.history.push(route);
 
 	render() {
-		const formTitle = 'Add experiences';
-		const subtitle =
-			'You will have a chance to review all fields before final submission for review.';
-
 		const disciplineSelect = this.props.discipline ? (
 			<h3 className={css.SelectedDiscipline}>
 				<span className={css.SelectedDiscipline__Label}>
@@ -160,37 +231,74 @@ class NewExperience extends Component {
 				this.state.topicsList
 			)
 		);
-		const startOverBtn = this.createStartOverButton({
-			label: 'Start over',
-			type: 'cancel',
-			icon: 'revision',
-			iconColor: 'var(--grey-dark)',
-			route: '/'
-		});
+		const startOverBtn = this.createStartOverButton(
+			this.state.buttons.startOverBtn
+		);
 		const wellSelect = this.createWellSelect(this.state.wellsList);
 		const topicSelect = this.createTopicsSelect(this.props.topics);
+		const sectionFilter = this.createSectionFilter(this.state.filtersList);
+		const formationFilter = this.createFormationFilter(
+			this.state.filtersList
+		);
+		const operationFilter = this.createOperationFilter(
+			this.state.filtersList
+		);
+		const depthFilter = this.createDepthFilter(this.state.filtersList);
 		const formFilterSection = this.props.discipline ? (
-			<section className={css.NewExperience__Filters}>
-				{wellSelect}
-				{topicSelect}
+			<React.Fragment>
+				<section className={css.NewExperience__Filters}>
+					{wellSelect}
+					{topicSelect}
+				</section>
+				<section>
+					<p>{this.state.filterInstructions}</p>
+				</section>
+				<section className={css.NewExperience__Filters}>
+					{sectionFilter}
+					{formationFilter}
+					{operationFilter}
+					{depthFilter}
+				</section>
+			</React.Fragment>
+		) : null;
+		const formHeaderCSS = this.props.discipline
+			? css.NewExperience__Filters
+			: css.NewExperience__SelectDiscipline;
+		const otherEntries = this.props.currTopic ? (
+			<section className={css.NewExperience__OtherEntries}>
+				<ul>
+					<li key='1'>
+						Future feature other experience entries section
+					</li>
+					<li key='2'>
+						Future feature other experience entries section
+					</li>
+					<li key='3'>
+						Future feature other experience entries section
+					</li>
+					<li key='4'>
+						Future feature other experience entries section
+					</li>
+				</ul>
 			</section>
 		) : null;
+		// * Finally create form
 		const form = this.createForm(this.state.formConfig);
-
 		return (
 			<article className={css.NewExperience}>
 				<section className={css.NewExperience__Title}>
 					<EquinorPointer />
-					<h1>{formTitle}</h1>
+					<h1>{this.state.formTitle}</h1>
 				</section>
 				<section className={css.NewExperience__Subtitle}>
-					<h2 className="italic">{subtitle}</h2>
+					<h2 className='italic'>{this.state.subtitle}</h2>
 				</section>
-				<section className={css.NewExperience__Filters}>
+				<section className={formHeaderCSS}>
 					{disciplineSelect}
 					{startOverBtn}
 				</section>
 				{formFilterSection}
+				{otherEntries}
 				<section className={css.NewExperience__FormSection}>
 					{form}
 				</section>
