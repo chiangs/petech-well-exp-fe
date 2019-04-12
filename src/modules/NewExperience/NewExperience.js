@@ -46,7 +46,12 @@ class NewExperience extends Component {
 				iconType: 'solid',
 				iconColor: 'var(--black)'
 			}
-		}
+		},
+		wellsList: null,
+		disciplinesList: null,
+		filtersList: { ...newExpFilter },
+		topicsList: null,
+		formConfig: null
 	};
 
 	componentDidMount() {
@@ -58,7 +63,6 @@ class NewExperience extends Component {
 				this.setState({
 					wellsList: { ...wellSelect },
 					disciplinesList: { ...disciplineSelect },
-					filtersList: { ...newExpFilter },
 					topicsList: [...TOPICS],
 					formConfig: { ...newExpForm }
 				});
@@ -268,10 +272,13 @@ class NewExperience extends Component {
 			<section className={css.NewExperience__OtherEntries}>
 				<ul>
 					<li key='1'>
-						Future feature other experience entries section
+						<h3>Make this collapsible?</h3>
 					</li>
 					<li key='2'>
-						Future feature other experience entries section
+						<h4>
+							How else to hide or keep the topics nav in view /
+							easy to access?
+						</h4>
 					</li>
 					<li key='3'>
 						Future feature other experience entries section

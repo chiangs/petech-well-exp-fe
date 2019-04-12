@@ -12,7 +12,13 @@
 
 .NewExperience__Title img {
 	height: var(--base);
-	margin-right: var(--single);
+	margin-left: var(--single);
+	position: absolute;
+}
+
+.NewExperience__Title h1 {
+	margin-left: var(--triple);
+	padding-bottom: var(--double);
 }
 
 .NewExperience__Subtitle * {

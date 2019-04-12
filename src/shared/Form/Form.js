@@ -11,7 +11,7 @@ const Form = props => {
 		setTimeout(() => {
 			footer.scrollIntoView({ behavior: 'smooth' });
 		}, 200);
-	});
+	}, []);
 
 	// * create list of form elements
 	const formElements = [];
